@@ -13,14 +13,26 @@
 		B87D6E6F1876212700C25789 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B87D6E6D1876212700C25789 /* InfoPlist.strings */; };
 		B87D6E711876212700C25789 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D6E701876212700C25789 /* main.m */; };
 		B87D6E751876212700C25789 /* ABAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D6E741876212700C25789 /* ABAppDelegate.m */; };
-		B87D6E781876212800C25789 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B87D6E761876212800C25789 /* Main.storyboard */; };
-		B87D6E7B1876212800C25789 /* ABViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D6E7A1876212800C25789 /* ABViewController.m */; };
+		B87D6E781876212800C25789 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B87D6E761876212800C25789 /* iPhone.storyboard */; };
 		B87D6E7D1876212800C25789 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B87D6E7C1876212800C25789 /* Images.xcassets */; };
 		B87D6E841876212800C25789 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B87D6E831876212800C25789 /* XCTest.framework */; };
 		B87D6E851876212800C25789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B87D6E641876212700C25789 /* Foundation.framework */; };
 		B87D6E861876212800C25789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B87D6E681876212700C25789 /* UIKit.framework */; };
 		B87D6E8E1876212800C25789 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B87D6E8C1876212800C25789 /* InfoPlist.strings */; };
 		B87D6E901876212800C25789 /* ActivityMonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D6E8F1876212800C25789 /* ActivityMonitorTests.m */; };
+		B87D6E9A1876213B00C25789 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B87D6E991876213B00C25789 /* CoreMotion.framework */; };
+		B87D6EA31876224100C25789 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B87D6EA21876224100C25789 /* CoreData.framework */; };
+		B87D6EA71876228200C25789 /* ABDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D6EA61876228200C25789 /* ABDispatch.m */; };
+		B87D6EAB1876248900C25789 /* ABDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D6EAA1876248900C25789 /* ABDataManager.m */; };
+		B8833E3B18764E8E00469012 /* ABViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E3A18764E8E00469012 /* ABViewController.m */; };
+		B8833E3E18764EA400469012 /* ABRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E3D18764EA400469012 /* ABRootViewController.m */; };
+		B8833E4218771E0D00469012 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8833E4018771E0D00469012 /* Model.xcdatamodeld */; };
+		B8833E4618771F9600469012 /* ABActivityDay.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E4518771F9600469012 /* ABActivityDay.m */; };
+		B8833E4C18771FBF00469012 /* NSManagedObject+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E4B18771FBF00469012 /* NSManagedObject+AB.m */; };
+		B8833E501877205600469012 /* NSDictionary+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E4F1877205600469012 /* NSDictionary+AB.m */; };
+		B8833E53187721EA00469012 /* ABActivityDay+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E52187721EA00469012 /* ABActivityDay+AB.m */; };
+		B8833E561877247B00469012 /* NSDate+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E551877247B00469012 /* NSDate+AB.m */; };
+		B8833E5B1877269C00469012 /* ABStepCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E5A1877269C00469012 /* ABStepCounter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,15 +56,38 @@
 		B87D6E721876212700C25789 /* ActivityMonitor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ActivityMonitor-Prefix.pch"; sourceTree = "<group>"; };
 		B87D6E731876212700C25789 /* ABAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABAppDelegate.h; sourceTree = "<group>"; };
 		B87D6E741876212700C25789 /* ABAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABAppDelegate.m; sourceTree = "<group>"; };
-		B87D6E771876212800C25789 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B87D6E791876212800C25789 /* ABViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABViewController.h; sourceTree = "<group>"; };
-		B87D6E7A1876212800C25789 /* ABViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABViewController.m; sourceTree = "<group>"; };
+		B87D6E771876212800C25789 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPhone.storyboard; sourceTree = "<group>"; };
 		B87D6E7C1876212800C25789 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B87D6E821876212800C25789 /* ActivityMonitorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ActivityMonitorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B87D6E831876212800C25789 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B87D6E8B1876212800C25789 /* ActivityMonitorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ActivityMonitorTests-Info.plist"; sourceTree = "<group>"; };
 		B87D6E8D1876212800C25789 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B87D6E8F1876212800C25789 /* ActivityMonitorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityMonitorTests.m; sourceTree = "<group>"; };
+		B87D6E991876213B00C25789 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		B87D6EA21876224100C25789 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B87D6EA51876228200C25789 /* ABDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABDispatch.h; sourceTree = "<group>"; };
+		B87D6EA61876228200C25789 /* ABDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABDispatch.m; sourceTree = "<group>"; };
+		B87D6EA91876248900C25789 /* ABDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABDataManager.h; sourceTree = "<group>"; };
+		B87D6EAA1876248900C25789 /* ABDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABDataManager.m; sourceTree = "<group>"; };
+		B87D6EAD187625CA00C25789 /* ABConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABConstants.h; sourceTree = "<group>"; };
+		B87D6EAE187626D700C25789 /* ActivityMonitor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ActivityMonitor.entitlements; sourceTree = "<group>"; };
+		B8833E3918764E8E00469012 /* ABViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABViewController.h; sourceTree = "<group>"; };
+		B8833E3A18764E8E00469012 /* ABViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABViewController.m; sourceTree = "<group>"; };
+		B8833E3C18764EA400469012 /* ABRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABRootViewController.h; sourceTree = "<group>"; };
+		B8833E3D18764EA400469012 /* ABRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABRootViewController.m; sourceTree = "<group>"; };
+		B8833E4118771E0D00469012 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		B8833E4418771F9600469012 /* ABActivityDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABActivityDay.h; sourceTree = "<group>"; };
+		B8833E4518771F9600469012 /* ABActivityDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABActivityDay.m; sourceTree = "<group>"; };
+		B8833E4A18771FBF00469012 /* NSManagedObject+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+AB.h"; sourceTree = "<group>"; };
+		B8833E4B18771FBF00469012 /* NSManagedObject+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+AB.m"; sourceTree = "<group>"; };
+		B8833E4E1877205600469012 /* NSDictionary+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+AB.h"; sourceTree = "<group>"; };
+		B8833E4F1877205600469012 /* NSDictionary+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+AB.m"; sourceTree = "<group>"; };
+		B8833E51187721EA00469012 /* ABActivityDay+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ABActivityDay+AB.h"; sourceTree = "<group>"; };
+		B8833E52187721EA00469012 /* ABActivityDay+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ABActivityDay+AB.m"; sourceTree = "<group>"; };
+		B8833E541877247B00469012 /* NSDate+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+AB.h"; sourceTree = "<group>"; };
+		B8833E551877247B00469012 /* NSDate+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+AB.m"; sourceTree = "<group>"; };
+		B8833E591877269C00469012 /* ABStepCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABStepCounter.h; sourceTree = "<group>"; };
+		B8833E5A1877269C00469012 /* ABStepCounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABStepCounter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B87D6EA31876224100C25789 /* CoreData.framework in Frameworks */,
+				B87D6E9A1876213B00C25789 /* CoreMotion.framework in Frameworks */,
 				B87D6E671876212700C25789 /* CoreGraphics.framework in Frameworks */,
 				B87D6E691876212700C25789 /* UIKit.framework in Frameworks */,
 				B87D6E651876212700C25789 /* Foundation.framework in Frameworks */,
@@ -101,6 +138,8 @@
 		B87D6E631876212700C25789 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B87D6EA21876224100C25789 /* CoreData.framework */,
+				B87D6E991876213B00C25789 /* CoreMotion.framework */,
 				B87D6E641876212700C25789 /* Foundation.framework */,
 				B87D6E661876212700C25789 /* CoreGraphics.framework */,
 				B87D6E681876212700C25789 /* UIKit.framework */,
@@ -112,12 +151,9 @@
 		B87D6E6A1876212700C25789 /* ActivityMonitor */ = {
 			isa = PBXGroup;
 			children = (
-				B87D6E731876212700C25789 /* ABAppDelegate.h */,
-				B87D6E741876212700C25789 /* ABAppDelegate.m */,
-				B87D6E761876212800C25789 /* Main.storyboard */,
-				B87D6E791876212800C25789 /* ABViewController.h */,
-				B87D6E7A1876212800C25789 /* ABViewController.m */,
-				B87D6E7C1876212800C25789 /* Images.xcassets */,
+				B87D6EAE187626D700C25789 /* ActivityMonitor.entitlements */,
+				B87D6E9B187621E400C25789 /* Source */,
+				B87D6E9C187621EA00C25789 /* Media */,
 				B87D6E6B1876212700C25789 /* Supporting Files */,
 			);
 			path = ActivityMonitor;
@@ -150,6 +186,166 @@
 				B87D6E8C1876212800C25789 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B87D6E9B187621E400C25789 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				B87D6EAD187625CA00C25789 /* ABConstants.h */,
+				B87D6EA01876221300C25789 /* Delegate */,
+				B87D6E9E187621FE00C25789 /* UI */,
+				B8833E3F18771DFB00469012 /* Data */,
+				B87D6EA11876222A00C25789 /* Utilities */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		B87D6E9C187621EA00C25789 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				B87D6E7C1876212800C25789 /* Images.xcassets */,
+			);
+			name = Media;
+			sourceTree = "<group>";
+		};
+		B87D6E9D187621F700C25789 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B87D6E761876212800C25789 /* iPhone.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		B87D6E9E187621FE00C25789 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B8833E3818764E7900469012 /* Common */,
+				B87D6E9F1876220600C25789 /* Controllers */,
+				B87D6E9D187621F700C25789 /* Storyboards */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		B87D6E9F1876220600C25789 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B8833E3C18764EA400469012 /* ABRootViewController.h */,
+				B8833E3D18764EA400469012 /* ABRootViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B87D6EA01876221300C25789 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				B87D6E731876212700C25789 /* ABAppDelegate.h */,
+				B87D6E741876212700C25789 /* ABAppDelegate.m */,
+			);
+			name = Delegate;
+			sourceTree = "<group>";
+		};
+		B87D6EA11876222A00C25789 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B8833E4D1877204900469012 /* Categories */,
+				B87D6EA81876247900C25789 /* Core Data */,
+				B87D6EA41876225500C25789 /* Concurrency */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		B87D6EA41876225500C25789 /* Concurrency */ = {
+			isa = PBXGroup;
+			children = (
+				B87D6EA51876228200C25789 /* ABDispatch.h */,
+				B87D6EA61876228200C25789 /* ABDispatch.m */,
+			);
+			name = Concurrency;
+			sourceTree = "<group>";
+		};
+		B87D6EA81876247900C25789 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				B87D6EA91876248900C25789 /* ABDataManager.h */,
+				B87D6EAA1876248900C25789 /* ABDataManager.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		B8833E3818764E7900469012 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B8833E3918764E8E00469012 /* ABViewController.h */,
+				B8833E3A18764E8E00469012 /* ABViewController.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		B8833E3F18771DFB00469012 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B8833E4018771E0D00469012 /* Model.xcdatamodeld */,
+				B8833E4318771F6900469012 /* Base Class */,
+				B8833E4718771F9B00469012 /* Methods */,
+				B8833E581877268500469012 /* Step Counter */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		B8833E4318771F6900469012 /* Base Class */ = {
+			isa = PBXGroup;
+			children = (
+				B8833E4418771F9600469012 /* ABActivityDay.h */,
+				B8833E4518771F9600469012 /* ABActivityDay.m */,
+			);
+			name = "Base Class";
+			sourceTree = "<group>";
+		};
+		B8833E4718771F9B00469012 /* Methods */ = {
+			isa = PBXGroup;
+			children = (
+				B8833E4918771FB100469012 /* Base */,
+				B8833E4818771FAB00469012 /* Activity Day */,
+			);
+			name = Methods;
+			sourceTree = "<group>";
+		};
+		B8833E4818771FAB00469012 /* Activity Day */ = {
+			isa = PBXGroup;
+			children = (
+				B8833E51187721EA00469012 /* ABActivityDay+AB.h */,
+				B8833E52187721EA00469012 /* ABActivityDay+AB.m */,
+			);
+			name = "Activity Day";
+			sourceTree = "<group>";
+		};
+		B8833E4918771FB100469012 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B8833E4A18771FBF00469012 /* NSManagedObject+AB.h */,
+				B8833E4B18771FBF00469012 /* NSManagedObject+AB.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		B8833E4D1877204900469012 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				B8833E4E1877205600469012 /* NSDictionary+AB.h */,
+				B8833E4F1877205600469012 /* NSDictionary+AB.m */,
+				B8833E541877247B00469012 /* NSDate+AB.h */,
+				B8833E551877247B00469012 /* NSDate+AB.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		B8833E581877268500469012 /* Step Counter */ = {
+			isa = PBXGroup;
+			children = (
+				B8833E591877269C00469012 /* ABStepCounter.h */,
+				B8833E5A1877269C00469012 /* ABStepCounter.m */,
+			);
+			name = "Step Counter";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +396,17 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Andrew Barba";
 				TargetAttributes = {
+					B87D6E601876212700C25789 = {
+						DevelopmentTeam = EVJS956X67;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
 					B87D6E811876212800C25789 = {
 						TestTargetID = B87D6E601876212700C25789;
 					};
@@ -231,7 +438,7 @@
 			files = (
 				B87D6E7D1876212800C25789 /* Images.xcassets in Resources */,
 				B87D6E6F1876212700C25789 /* InfoPlist.strings in Resources */,
-				B87D6E781876212800C25789 /* Main.storyboard in Resources */,
+				B87D6E781876212800C25789 /* iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,9 +457,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8833E4618771F9600469012 /* ABActivityDay.m in Sources */,
 				B87D6E711876212700C25789 /* main.m in Sources */,
-				B87D6E7B1876212800C25789 /* ABViewController.m in Sources */,
+				B8833E3E18764EA400469012 /* ABRootViewController.m in Sources */,
+				B8833E53187721EA00469012 /* ABActivityDay+AB.m in Sources */,
 				B87D6E751876212700C25789 /* ABAppDelegate.m in Sources */,
+				B8833E4218771E0D00469012 /* Model.xcdatamodeld in Sources */,
+				B8833E5B1877269C00469012 /* ABStepCounter.m in Sources */,
+				B87D6EAB1876248900C25789 /* ABDataManager.m in Sources */,
+				B8833E561877247B00469012 /* NSDate+AB.m in Sources */,
+				B87D6EA71876228200C25789 /* ABDispatch.m in Sources */,
+				B8833E501877205600469012 /* NSDictionary+AB.m in Sources */,
+				B8833E4C18771FBF00469012 /* NSManagedObject+AB.m in Sources */,
+				B8833E3B18764E8E00469012 /* ABViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,12 +500,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		B87D6E761876212800C25789 /* Main.storyboard */ = {
+		B87D6E761876212800C25789 /* iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B87D6E771876212800C25789 /* Base */,
 			);
-			name = Main.storyboard;
+			name = iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 		B87D6E8C1876212800C25789 /* InfoPlist.strings */ = {
@@ -379,6 +596,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = ActivityMonitor/ActivityMonitor.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ActivityMonitor/ActivityMonitor-Prefix.pch";
 				INFOPLIST_FILE = "ActivityMonitor/ActivityMonitor-Info.plist";
@@ -392,6 +610,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = ActivityMonitor/ActivityMonitor.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ActivityMonitor/ActivityMonitor-Prefix.pch";
 				INFOPLIST_FILE = "ActivityMonitor/ActivityMonitor-Info.plist";
@@ -461,6 +680,7 @@
 				B87D6E951876212800C25789 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B87D6E961876212800C25789 /* Build configuration list for PBXNativeTarget "ActivityMonitorTests" */ = {
 			isa = XCConfigurationList;
@@ -469,8 +689,22 @@
 				B87D6E981876212800C25789 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B8833E4018771E0D00469012 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B8833E4118771E0D00469012 /* Model.xcdatamodel */,
+			);
+			currentVersion = B8833E4118771E0D00469012 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B87D6E591876212700C25789 /* Project object */;
 }
