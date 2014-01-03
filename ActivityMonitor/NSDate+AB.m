@@ -133,7 +133,7 @@
 {
     NSCalendar* calendar = [NSCalendar currentCalendar];
     calendar.timeZone = [NSTimeZone localTimeZone];
-    calendar.locale = [NSLocale currenABocale];
+    calendar.locale = [NSLocale currentLocale];
     NSDateComponents* toAdd = [[NSDateComponents alloc] init];
     switch (unit) {
         case NSYearCalendarUnit:

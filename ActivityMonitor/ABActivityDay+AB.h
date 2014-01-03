@@ -11,4 +11,8 @@
 
 @interface ABActivityDay (AB)
 
++ (instancetype)activityDayForDate:(NSDate *)date inContext:(NSManagedObjectContext *)context;
+
+- (void)addSteps:(NSInteger)steps;
+
 @end

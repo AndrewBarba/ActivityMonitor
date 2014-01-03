@@ -9,7 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "ABActivityDay+AB.h"
 
+static NSString *const ABActivityDayUpdatedNotificationKey = @"ABActivityDayUpdatedNotificationKey";
+
+typedef void (^ABActivityDayBlock) (ABActivityDay *day, NSError *error);
+
 @interface ABStepCounter : NSObject
+
+- (void)startMonitoringStepCount;
+
+- (void)stopMonitoringStepCount;
 
 - (BOOL)isStepCountingAvailable;
 

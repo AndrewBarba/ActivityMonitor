@@ -15,4 +15,28 @@
     return @"ABActivityDay";
 }
 
++ (instancetype)activityDayForDate:(NSDate *)date inContext:(NSManagedObjectContext *)context
+{
+    ABActivityDay *day = nil;
+    
+    NSDate *diaryDate = [date diaryDate];
+    
+    NSString *dateId = [diaryDate simpleStringRespresentation];
+    day = [self singleObjectForProperty:@"id" withValue:dateId inContext:context];
+    
+    if (day == nil) {
+        day = [self objectInContext:context];
+        day.id = dateId;
+        day.date = diaryDate;
+        day.steps = @0;
+    }
+    
+    return day;
+}
+
+- (void)addSteps:(NSInteger)steps
+{
+    self.steps = @(steps + self.steps.integerValue);
+}
+
 @end
