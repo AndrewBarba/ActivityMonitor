@@ -17,5 +17,9 @@
     #import "ABDispatch.h"
     #import "NSDictionary+AB.h"
     #import "NSDate+AB.h"
+    #import "NSNotificationCenter+AB.h"
+    #import "NSNumber+AB.h"
+    #import "UIView+AB.h"
+    #import "UIColor+AB.h"
     #import "ABViewController.h"
 #endif

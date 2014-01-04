@@ -37,8 +37,6 @@
 
 + (instancetype)singleObjectForProperty:(NSString *)propertyName withValue:(id)value inContext:(NSManagedObjectContext *)context
 {
-    NSManagedObject *object = nil;
-    
     NSString *entityName = [self entityName];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:entityName];
@@ -53,13 +51,9 @@
     if (error || !matches) {
         // handle error
         [NSException raise:@"Failed to fetch object from CoreData" format:nil];
-    } else if (matches.count == 0) {
-        // could not find object
-    } else {
-        object = [matches lastObject];
     }
     
-    return object;
+    return [matches lastObject];
 }
 
 - (instancetype)referenceInContext:(NSManagedObjectContext *)context
@@ -80,6 +74,10 @@
 
 + (NSSet *)allObjectsInContext:(NSManagedObjectContext *)context
 {
+    if (!context) {
+        context = [[ABDataManager sharedManager] mainContext];
+    }
+    
     NSString *entityName = [self entityName];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:entityName];
@@ -109,6 +107,10 @@
 
 + (void)updateSet:(NSSet *)oldSet toSet:(NSSet *)newSet inContext:(NSManagedObjectContext *)context
 {
+    if (!context) {
+        context = [[ABDataManager sharedManager] mainContext];
+    }
+    
     for (NSManagedObject *object in oldSet) {
         if (![newSet containsObject:object]) {
             [context deleteObject:object];

@@ -15,7 +15,7 @@
 - (NSString *)simpleStringRespresentation
 {
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"MM/dd/yyyy";
+    dateFormatter.dateFormat = @"MM-dd-yyyy";
     return [dateFormatter stringFromDate:self];
 }
 
@@ -68,7 +68,7 @@
     NSInteger destinationGMTOffset = [destinationTimeZone secondsFromGMTForDate:self];
     
     NSTimeInterval interval = [self timeIntervalSince1970];
-    NSTimeInterval destinationInterval = interval - destinationGMTOffset;
+    NSTimeInterval destinationInterval = interval + destinationGMTOffset;
     
     NSDate* destinationDate = [NSDate dateWithTimeIntervalSince1970:destinationInterval];
     return destinationDate;
@@ -117,6 +117,16 @@
 	}
     
 	return adjustedMidnight;
+}
+
+- (NSDate *)tomorrow
+{
+    return [self dateByAddingUnit:NSCalendarUnitDay offset:1];
+}
+
+- (NSDate *)yesterday
+{
+    return [self dateByAddingUnit:NSCalendarUnitDay offset:-1];
 }
 
 - (NSString *)dayOfWeek

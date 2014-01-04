@@ -36,7 +36,16 @@
 
 - (void)addSteps:(NSInteger)steps
 {
-    self.steps = @(steps + self.steps.integerValue);
+    self.steps = @(self.steps.integerValue + steps);
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:
+            @"{\n id: %@,\n date: %@,\n steps: %@\n}",
+            self.id,
+            self.date.longStringRepresentation,
+            self.steps.stringValue];
 }
 
 @end

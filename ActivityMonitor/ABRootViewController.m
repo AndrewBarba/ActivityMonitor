@@ -8,6 +8,7 @@
 
 #import "ABRootViewController.h"
 #import "ABDataManager.h"
+#import "ABStepCounter.h"
 
 @implementation ABRootViewController
 
@@ -16,10 +17,16 @@
     [super viewDidAppear:animated];
     
     AB_DISPATCH_ONCE(^{
-        [[ABDataManager sharedManager] openDocument:^(BOOL success){
-            NSLog(@"OPENED DOCUMENT: %i", success);
+        [[ABDataManager sharedManager] openDocument:^(BOOL success){            
+            [self _handleDocumentOpened];
         }];
     });
+}
+
+- (void)_handleDocumentOpened
+{
+    [[ABStepCounter sharedCounter] startMonitoringStepCount];
+    [self performSegueWithIdentifier:@"Main Segue" sender:self];
 }
 
 @end

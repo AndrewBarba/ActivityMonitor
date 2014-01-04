@@ -12,8 +12,8 @@
 
 @interface ABActivityDay : NSManagedObject
 
-@property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSNumber * steps;
 
 @end

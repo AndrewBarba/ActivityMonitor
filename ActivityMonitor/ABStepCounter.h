@@ -13,13 +13,39 @@ static NSString *const ABActivityDayUpdatedNotificationKey = @"ABActivityDayUpda
 
 typedef void (^ABActivityDayBlock) (ABActivityDay *day, NSError *error);
 
+typedef NS_ENUM(NSInteger, ABStepCountingStatus){
+    ABStepCountingStatusNotSupported = -1,
+    ABStepCountingStatusPermissionUnknown = 0,
+    ABStepCountingStatusPermissionDenied = 1,
+    ABStepCountingStatusOkay = 2
+};
+
 @interface ABStepCounter : NSObject
 
+/**
+ * Rebuilds all activity for the past 7 days
+ */
+- (void)rebuildAllActivity:(ABSetBlock)complete;
+
+/**
+ * Recalcualtes the number of steps for a given date
+ */
+- (void)rebuildActivityDayForDate:(NSDate *)date onCompletion:(ABActivityDayBlock)complete;
+
+/**
+ * Starts monitoring the user for steps
+ */
 - (void)startMonitoringStepCount;
 
+/**
+ * Stops monitoring the user
+ */
 - (void)stopMonitoringStepCount;
 
-- (BOOL)isStepCountingAvailable;
+/**
+ * The Current status of step counting permission
+ */
+- (ABStepCountingStatus)stepCountingStatus;
 
 + (instancetype)sharedCounter;
 

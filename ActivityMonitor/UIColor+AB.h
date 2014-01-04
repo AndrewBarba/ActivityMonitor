@@ -1,18 +1,15 @@
 //
-//  ABActivityDay.m
+//  UIColor+AB.h
 //  ActivityMonitor
 //
 //  Created by Andrew Barba on 1/3/14.
 //  Copyright (c) 2014 Andrew Barba. All rights reserved.
 //
 
-#import "ABActivityDay.h"
+#import <UIKit/UIKit.h>
 
+@interface UIColor (AB)
 
-@implementation ABActivityDay
-
-@dynamic date;
-@dynamic id;
-@dynamic steps;
++ (instancetype)activitySuccessColor;
 
 @end

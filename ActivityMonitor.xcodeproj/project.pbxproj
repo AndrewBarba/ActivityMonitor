@@ -27,12 +27,21 @@
 		B8833E3B18764E8E00469012 /* ABViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E3A18764E8E00469012 /* ABViewController.m */; };
 		B8833E3E18764EA400469012 /* ABRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E3D18764EA400469012 /* ABRootViewController.m */; };
 		B8833E4218771E0D00469012 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8833E4018771E0D00469012 /* Model.xcdatamodeld */; };
-		B8833E4618771F9600469012 /* ABActivityDay.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E4518771F9600469012 /* ABActivityDay.m */; };
 		B8833E4C18771FBF00469012 /* NSManagedObject+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E4B18771FBF00469012 /* NSManagedObject+AB.m */; };
 		B8833E501877205600469012 /* NSDictionary+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E4F1877205600469012 /* NSDictionary+AB.m */; };
 		B8833E53187721EA00469012 /* ABActivityDay+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E52187721EA00469012 /* ABActivityDay+AB.m */; };
 		B8833E561877247B00469012 /* NSDate+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E551877247B00469012 /* NSDate+AB.m */; };
 		B8833E5B1877269C00469012 /* ABStepCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E5A1877269C00469012 /* ABStepCounter.m */; };
+		B8833E5E1877883C00469012 /* ABActivityDay.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E5D1877883C00469012 /* ABActivityDay.m */; };
+		B8833E6118778AB300469012 /* NSNotificationCenter+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E6018778AB300469012 /* NSNotificationCenter+AB.m */; };
+		B8833E661877999600469012 /* ABCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E651877999600469012 /* ABCoreDataTableViewController.m */; };
+		B8833E6918779A5C00469012 /* ABTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E6818779A5C00469012 /* ABTableViewController.m */; };
+		B8833E6C18779B7200469012 /* ABAllActivityDaysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E6B18779B7200469012 /* ABAllActivityDaysViewController.m */; };
+		B8833E6F18779D2800469012 /* NSNumber+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E6E18779D2800469012 /* NSNumber+AB.m */; };
+		B8833E731877A49B00469012 /* ABMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E721877A49B00469012 /* ABMenuViewController.m */; };
+		B8833E761877A62D00469012 /* UIView+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E751877A62D00469012 /* UIView+AB.m */; };
+		B8833E7A1877AFAB00469012 /* ABActivityDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E791877AFAB00469012 /* ABActivityDayViewController.m */; };
+		B8833E7D1877B26900469012 /* UIColor+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E7C1877B26900469012 /* UIColor+AB.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +85,6 @@
 		B8833E3C18764EA400469012 /* ABRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABRootViewController.h; sourceTree = "<group>"; };
 		B8833E3D18764EA400469012 /* ABRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABRootViewController.m; sourceTree = "<group>"; };
 		B8833E4118771E0D00469012 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		B8833E4418771F9600469012 /* ABActivityDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABActivityDay.h; sourceTree = "<group>"; };
-		B8833E4518771F9600469012 /* ABActivityDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABActivityDay.m; sourceTree = "<group>"; };
 		B8833E4A18771FBF00469012 /* NSManagedObject+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+AB.h"; sourceTree = "<group>"; };
 		B8833E4B18771FBF00469012 /* NSManagedObject+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+AB.m"; sourceTree = "<group>"; };
 		B8833E4E1877205600469012 /* NSDictionary+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+AB.h"; sourceTree = "<group>"; };
@@ -88,6 +95,26 @@
 		B8833E551877247B00469012 /* NSDate+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+AB.m"; sourceTree = "<group>"; };
 		B8833E591877269C00469012 /* ABStepCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABStepCounter.h; sourceTree = "<group>"; };
 		B8833E5A1877269C00469012 /* ABStepCounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABStepCounter.m; sourceTree = "<group>"; };
+		B8833E5C1877883C00469012 /* ABActivityDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABActivityDay.h; sourceTree = "<group>"; };
+		B8833E5D1877883C00469012 /* ABActivityDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABActivityDay.m; sourceTree = "<group>"; };
+		B8833E5F18778AB300469012 /* NSNotificationCenter+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+AB.h"; sourceTree = "<group>"; };
+		B8833E6018778AB300469012 /* NSNotificationCenter+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+AB.m"; sourceTree = "<group>"; };
+		B8833E641877999600469012 /* ABCoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABCoreDataTableViewController.h; sourceTree = "<group>"; };
+		B8833E651877999600469012 /* ABCoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABCoreDataTableViewController.m; sourceTree = "<group>"; };
+		B8833E6718779A5C00469012 /* ABTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTableViewController.h; sourceTree = "<group>"; };
+		B8833E6818779A5C00469012 /* ABTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTableViewController.m; sourceTree = "<group>"; };
+		B8833E6A18779B7200469012 /* ABAllActivityDaysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABAllActivityDaysViewController.h; sourceTree = "<group>"; };
+		B8833E6B18779B7200469012 /* ABAllActivityDaysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABAllActivityDaysViewController.m; sourceTree = "<group>"; };
+		B8833E6D18779D2800469012 /* NSNumber+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+AB.h"; sourceTree = "<group>"; };
+		B8833E6E18779D2800469012 /* NSNumber+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+AB.m"; sourceTree = "<group>"; };
+		B8833E711877A49B00469012 /* ABMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABMenuViewController.h; sourceTree = "<group>"; };
+		B8833E721877A49B00469012 /* ABMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABMenuViewController.m; sourceTree = "<group>"; };
+		B8833E741877A62D00469012 /* UIView+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AB.h"; sourceTree = "<group>"; };
+		B8833E751877A62D00469012 /* UIView+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AB.m"; sourceTree = "<group>"; };
+		B8833E781877AFAB00469012 /* ABActivityDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABActivityDayViewController.h; sourceTree = "<group>"; };
+		B8833E791877AFAB00469012 /* ABActivityDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABActivityDayViewController.m; sourceTree = "<group>"; };
+		B8833E7B1877B26900469012 /* UIColor+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AB.h"; sourceTree = "<group>"; };
+		B8833E7C1877B26900469012 /* UIColor+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AB.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,8 +256,10 @@
 		B87D6E9F1876220600C25789 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B8833E3C18764EA400469012 /* ABRootViewController.h */,
-				B8833E3D18764EA400469012 /* ABRootViewController.m */,
+				B8833E621877995400469012 /* Root */,
+				B8833E701877A48100469012 /* Menu Controller */,
+				B8833E631877995E00469012 /* All Days */,
+				B8833E771877AF9700469012 /* Activity Day */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -277,6 +306,10 @@
 			children = (
 				B8833E3918764E8E00469012 /* ABViewController.h */,
 				B8833E3A18764E8E00469012 /* ABViewController.m */,
+				B8833E6718779A5C00469012 /* ABTableViewController.h */,
+				B8833E6818779A5C00469012 /* ABTableViewController.m */,
+				B8833E641877999600469012 /* ABCoreDataTableViewController.h */,
+				B8833E651877999600469012 /* ABCoreDataTableViewController.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -295,8 +328,8 @@
 		B8833E4318771F6900469012 /* Base Class */ = {
 			isa = PBXGroup;
 			children = (
-				B8833E4418771F9600469012 /* ABActivityDay.h */,
-				B8833E4518771F9600469012 /* ABActivityDay.m */,
+				B8833E5C1877883C00469012 /* ABActivityDay.h */,
+				B8833E5D1877883C00469012 /* ABActivityDay.m */,
 			);
 			name = "Base Class";
 			sourceTree = "<group>";
@@ -335,6 +368,14 @@
 				B8833E4F1877205600469012 /* NSDictionary+AB.m */,
 				B8833E541877247B00469012 /* NSDate+AB.h */,
 				B8833E551877247B00469012 /* NSDate+AB.m */,
+				B8833E5F18778AB300469012 /* NSNotificationCenter+AB.h */,
+				B8833E6018778AB300469012 /* NSNotificationCenter+AB.m */,
+				B8833E6D18779D2800469012 /* NSNumber+AB.h */,
+				B8833E6E18779D2800469012 /* NSNumber+AB.m */,
+				B8833E741877A62D00469012 /* UIView+AB.h */,
+				B8833E751877A62D00469012 /* UIView+AB.m */,
+				B8833E7B1877B26900469012 /* UIColor+AB.h */,
+				B8833E7C1877B26900469012 /* UIColor+AB.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -346,6 +387,42 @@
 				B8833E5A1877269C00469012 /* ABStepCounter.m */,
 			);
 			name = "Step Counter";
+			sourceTree = "<group>";
+		};
+		B8833E621877995400469012 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				B8833E3C18764EA400469012 /* ABRootViewController.h */,
+				B8833E3D18764EA400469012 /* ABRootViewController.m */,
+			);
+			name = Root;
+			sourceTree = "<group>";
+		};
+		B8833E631877995E00469012 /* All Days */ = {
+			isa = PBXGroup;
+			children = (
+				B8833E6A18779B7200469012 /* ABAllActivityDaysViewController.h */,
+				B8833E6B18779B7200469012 /* ABAllActivityDaysViewController.m */,
+			);
+			name = "All Days";
+			sourceTree = "<group>";
+		};
+		B8833E701877A48100469012 /* Menu Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B8833E711877A49B00469012 /* ABMenuViewController.h */,
+				B8833E721877A49B00469012 /* ABMenuViewController.m */,
+			);
+			name = "Menu Controller";
+			sourceTree = "<group>";
+		};
+		B8833E771877AF9700469012 /* Activity Day */ = {
+			isa = PBXGroup;
+			children = (
+				B8833E781877AFAB00469012 /* ABActivityDayViewController.h */,
+				B8833E791877AFAB00469012 /* ABActivityDayViewController.m */,
+			);
+			name = "Activity Day";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,16 +534,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8833E4618771F9600469012 /* ABActivityDay.m in Sources */,
+				B8833E6F18779D2800469012 /* NSNumber+AB.m in Sources */,
+				B8833E5E1877883C00469012 /* ABActivityDay.m in Sources */,
+				B8833E7D1877B26900469012 /* UIColor+AB.m in Sources */,
 				B87D6E711876212700C25789 /* main.m in Sources */,
 				B8833E3E18764EA400469012 /* ABRootViewController.m in Sources */,
 				B8833E53187721EA00469012 /* ABActivityDay+AB.m in Sources */,
 				B87D6E751876212700C25789 /* ABAppDelegate.m in Sources */,
 				B8833E4218771E0D00469012 /* Model.xcdatamodeld in Sources */,
+				B8833E731877A49B00469012 /* ABMenuViewController.m in Sources */,
 				B8833E5B1877269C00469012 /* ABStepCounter.m in Sources */,
 				B87D6EAB1876248900C25789 /* ABDataManager.m in Sources */,
+				B8833E6C18779B7200469012 /* ABAllActivityDaysViewController.m in Sources */,
 				B8833E561877247B00469012 /* NSDate+AB.m in Sources */,
+				B8833E6118778AB300469012 /* NSNotificationCenter+AB.m in Sources */,
+				B8833E761877A62D00469012 /* UIView+AB.m in Sources */,
+				B8833E7A1877AFAB00469012 /* ABActivityDayViewController.m in Sources */,
 				B87D6EA71876228200C25789 /* ABDispatch.m in Sources */,
+				B8833E661877999600469012 /* ABCoreDataTableViewController.m in Sources */,
+				B8833E6918779A5C00469012 /* ABTableViewController.m in Sources */,
 				B8833E501877205600469012 /* NSDictionary+AB.m in Sources */,
 				B8833E4C18771FBF00469012 /* NSManagedObject+AB.m in Sources */,
 				B8833E3B18764E8E00469012 /* ABViewController.m in Sources */,

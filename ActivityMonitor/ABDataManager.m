@@ -114,26 +114,26 @@
 
 -(void)resetDocument:(ABCoreDataBooleanBlock)complete
 {
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[self.mainDocument.fileURL path]]) {
-        if (self.mainDocument.documentState == UIDocumentStateNormal) {
-            [self.mainDocument closeWithCompletionHandler:^(BOOL done){
-                [[NSNotificationCenter defaultCenter] postNotificationName:ABMainDocumentClosedNotificationKey object:self.mainDocument];
+    [self createMainDocument:^{
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[self.mainDocument.fileURL path]]) {
+            if (self.mainDocument.documentState == UIDocumentStateNormal) {
+                [self.mainDocument closeWithCompletionHandler:^(BOOL done){
+                    [[NSNotificationCenter defaultCenter] postNotificationName:ABMainDocumentClosedNotificationKey object:self.mainDocument];
+                    [[NSFileManager defaultManager] removeItemAtURL:self.mainDocument.fileURL error:nil];
+                    [self createMainDocument:^{
+                        [self openDocument:complete];
+                    }];
+                }];
+            } else {
                 [[NSFileManager defaultManager] removeItemAtURL:self.mainDocument.fileURL error:nil];
                 [self createMainDocument:^{
                     [self openDocument:complete];
                 }];
-            }];
+            }
         } else {
-            [[NSFileManager defaultManager] removeItemAtURL:self.mainDocument.fileURL error:nil];
-            [self createMainDocument:^{
-                [self openDocument:complete];
-            }];
-        }
-    } else {
-        [self createMainDocument:^{
             [self openDocument:complete];
-        }];
-    }
+        }
+    }];
 }
 
 #pragma mark - Helpers

@@ -41,9 +41,22 @@
 - (NSDate *)dateWithHour:(NSInteger)hour andMinute:(NSInteger)minute;
 
 /**
- * Returns a day from 4am - 4am
+ * Returns a day from 2am - 2am
  */
 - (NSDate *)diaryDate;
+
+/**
+ * Adds one day to date
+ */
+- (NSDate *)tomorrow;
+
+/**
+ * Removes one day to date
+ */
+- (NSDate *)yesterday;
+
+- (NSDate*)dateByAddingUnit:(NSCalendarUnit)unit
+                     offset:(NSInteger)offset;
 
 - (NSString *)dayOfWeek;
 
