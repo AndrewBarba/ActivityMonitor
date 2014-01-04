@@ -29,10 +29,7 @@
     [_stepCounter startStepCountingUpdatesToQueue:_backgroundQueue
                                          updateOn:5
                                       withHandler:^(NSInteger steps, NSDate *timestamp, NSError *error){
-                                          [self rebuildActivityDayForDate:timestamp onCompletion:^(ABActivityDay *day, NSError *error){
-                                              [[NSNotificationCenter defaultCenter] postNotificationName:ABActivityDayUpdatedNotificationKey
-                                                                                                  object:day];
-                                          }];
+                                          [self rebuildActivityDayForDate:timestamp onCompletion:nil];
                                       }];
 }
 
@@ -97,9 +94,12 @@
                 day.steps = @(steps);
                 
                 return ^{
+                    ABActivityDay *newDay = [day referenceInContext:nil];
                     if (complete) {
-                        complete([day referenceInContext:nil], nil);
+                        complete(newDay, nil);
                     }
+                    [[NSNotificationCenter defaultCenter] postNotificationName:ABActivityDayUpdatedNotificationKey
+                                                                        object:newDay];
                 };
             }];
         } else {

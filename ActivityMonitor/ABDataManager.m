@@ -162,7 +162,8 @@
             self.mainDocument = [[UIManagedDocument alloc] initWithFileURL:fileURL];
             self.mainDocument.persistentStoreOptions = @{ NSMigratePersistentStoresAutomaticallyOption : @(YES),
                                                           NSInferMappingModelAutomaticallyOption       : @(YES),
-                                                          NSPersistentStoreUbiquitousContentNameKey    : documentName };
+                                                          NSPersistentStoreUbiquitousContentNameKey    : documentName,
+                                                          NSPersistentStoreUbiquitousContentURLKey     : [fileURL URLByAppendingPathComponent:@"CoreData"]};
             
             // create background context
             _backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];

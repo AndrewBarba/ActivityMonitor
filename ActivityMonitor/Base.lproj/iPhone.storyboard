@@ -164,9 +164,30 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bxI-ha-Rzz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="Qs0-rO-VzT">
+                                <rect key="frame" x="80" y="204" width="160" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="9Tw-80-Z5b"/>
+                                    <constraint firstAttribute="width" constant="160" id="GIV-6w-hDf"/>
+                                </constraints>
+                                <string key="text">0
+steps</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="40"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="Qs0-rO-VzT" secondAttribute="centerY" constant="0.5" id="1nL-fL-h4R"/>
+                            <constraint firstAttribute="centerX" secondItem="Qs0-rO-VzT" secondAttribute="centerX" id="day-JJ-UaM"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="stepsLabel" destination="Qs0-rO-VzT" id="yNU-s0-MM6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MlN-Ma-eZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -19,6 +19,10 @@
 {
     ABActivityDay *day = nil;
     
+    if (!date) {
+        date = [NSDate date];
+    }
+    
     NSDate *diaryDate = [date diaryDate];
     
     NSString *dateId = [diaryDate simpleStringRespresentation];

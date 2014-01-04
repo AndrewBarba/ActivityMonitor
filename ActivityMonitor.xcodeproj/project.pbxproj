@@ -178,7 +178,6 @@
 		B87D6E6A1876212700C25789 /* ActivityMonitor */ = {
 			isa = PBXGroup;
 			children = (
-				B87D6EAE187626D700C25789 /* ActivityMonitor.entitlements */,
 				B87D6E9B187621E400C25789 /* Source */,
 				B87D6E9C187621EA00C25789 /* Media */,
 				B87D6E6B1876212700C25789 /* Supporting Files */,
@@ -189,6 +188,7 @@
 		B87D6E6B1876212700C25789 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B87D6EAE187626D700C25789 /* ActivityMonitor.entitlements */,
 				B87D6E6C1876212700C25789 /* ActivityMonitor-Info.plist */,
 				B87D6E6D1876212700C25789 /* InfoPlist.strings */,
 				B87D6E701876212700C25789 /* main.m */,

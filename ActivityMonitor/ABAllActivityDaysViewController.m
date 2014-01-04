@@ -49,6 +49,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.containsEmptySet) {
+        return [super emptySetTableViewCellForIndexPath:indexPath];
+    }
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Activity Day Cell" forIndexPath:indexPath];
     
     ABActivityDay *day = [self.fetchedResultsController objectAtIndexPath:indexPath];

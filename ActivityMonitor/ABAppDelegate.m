@@ -17,6 +17,13 @@
     // Override point for customization after application launch.
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
+    [NSNotificationCenter observe:ABActivityDayUpdatedNotificationKey on:^(NSNotification *notification){
+        ABActivityDay *day = notification.object;
+        if ([day.date isToday]) {
+            [application setApplicationIconBadgeNumber:day.steps.integerValue];
+        }
+    }];
+    
     return YES;
 }
 
@@ -55,7 +62,9 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
     if ([ABDataManager sharedManager].mainDocument) {
-        [[ABStepCounter sharedCounter] startMonitoringStepCount];
+        [[ABStepCounter sharedCounter] rebuildActivityDayForDate:nil onCompletion:^(ABActivityDay *day, NSError *error){
+            [[ABStepCounter sharedCounter] startMonitoringStepCount];
+        }];
     }
 }
 

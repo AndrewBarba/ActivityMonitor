@@ -7,32 +7,58 @@
 //
 
 #import "ABActivityDayViewController.h"
+#import "ABStepCounter.h"
+#import "ABDataManager.h"
 
 @interface ABActivityDayViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *stepsLabel;
 
 @end
 
 @implementation ABActivityDayViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    self.activityDay = [ABActivityDay activityDayForDate:nil inContext:[ABDataManager sharedManager].mainContext];
+    
+    [[ABStepCounter sharedCounter] rebuildActivityDayForDate:nil onCompletion:^(ABActivityDay *day, NSError *error){
+        if (day && !error) {
+            self.activityDay = day;
+        }
+    }];
+	
+    [NSNotificationCenter observe:ABActivityDayUpdatedNotificationKey on:^(NSNotification *notification){
+        [self reloadData];
+    }];    
 }
 
-- (void)didReceiveMemoryWarning
+- (void)setActivityDay:(ABActivityDay *)activityDay
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if (_activityDay != activityDay) {
+        _activityDay = activityDay;
+    }
+    [self reloadData];
+}
+
+- (void)reloadData
+{
+    // update UI
+    self.stepsLabel.text = [NSString stringWithFormat:@"%@\nsteps", _activityDay.steps.decimalString];
+}
+
+#pragma mark - Step Label
+
+- (void)setStepsLabel:(UILabel *)stepsLabel
+{
+    if (_stepsLabel != stepsLabel) {
+        _stepsLabel = stepsLabel;
+        _stepsLabel.layer.cornerRadius = MIN(_stepsLabel.height, _stepsLabel.width) / 2.0f;
+        _stepsLabel.layer.borderWidth = 4.0;
+        _stepsLabel.layer.borderColor = [UIColor whiteColor].CGColor;
+    }
 }
 
 @end
