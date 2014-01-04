@@ -9,7 +9,7 @@
 #import "ABMenuViewController.h"
 
 #define AB_CLOSED_X 0
-#define AB_OPENED_X (_mainView.width * 0.8f)
+#define AB_OPENED_X (_mainView.width - 80.0f)
 
 @interface ABMenuViewController () <UIGestureRecognizerDelegate> {
     BOOL _isMenuOpen;
@@ -18,6 +18,42 @@
 @end
 
 @implementation ABMenuViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    __weak typeof(self) _self = self;
+    [NSNotificationCenter observe:UIApplicationDidEnterBackgroundNotification on:^(NSNotification *notification){
+        [_self closeMenuAnimated:NO];
+    }];
+}
+
+#pragma mark - Open And Close
+
+- (void)openMenuAnimated:(BOOL)animated
+{
+    if (animated) {
+        [UIView animateWithDuration:0.325 animations:^{
+            [_mainView setOriginX:AB_OPENED_X];
+        }];
+    } else {
+        [_mainView setOriginX:AB_OPENED_X];
+    }
+    _isMenuOpen = YES;
+}
+
+- (void)closeMenuAnimated:(BOOL)animated
+{
+    if (animated) {
+        [UIView animateWithDuration:0.325 animations:^{
+            [_mainView setOriginX:AB_CLOSED_X];
+        }];
+    } else {
+        [_mainView setOriginX:AB_CLOSED_X];
+    }
+    _isMenuOpen = NO;
+}
 
 #pragma mark - All Activites
 
@@ -32,10 +68,7 @@
 - (void)activityDaysController:(ABAllActivityDaysViewController *)controller selectedActivityDay:(ABActivityDay *)day
 {
     [self.activityDayViewController setActivityDay:day];
-    [UIView animateWithDuration:0.4 animations:^{
-        [_mainView setOriginX:AB_CLOSED_X];
-        _isMenuOpen = NO;
-    }];
+    [self closeMenuAnimated:YES];
 }
 
 #pragma mark - Activity Day
@@ -77,7 +110,10 @@
         _mainView.layer.rasterizationScale = [UIScreen mainScreen].scale;
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(_handlePanGesture:)];
         pan.delegate = self;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_handleTapGesture:)];
+        tap.delegate = self;
         [_mainView addGestureRecognizer:pan];
+        [_mainView addGestureRecognizer:tap];
     }
 }
 
@@ -110,12 +146,25 @@
     }
 }
 
+- (void)_handleTapGesture:(UITapGestureRecognizer *)tap
+{
+    if (_isMenuOpen) {
+        [self closeMenuAnimated:YES];
+    } else {
+        [self openMenuAnimated:YES];
+    }
+}
+
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)recognizer
 {
     if ([recognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
         UIPanGestureRecognizer *pan = (UIPanGestureRecognizer *)recognizer;
         CGPoint p = [pan locationInView:_mainView];
         return p.x <= 80;
+    } else if ([recognizer isKindOfClass:[UITapGestureRecognizer class]]) {
+        UITapGestureRecognizer *tap = (UITapGestureRecognizer *)recognizer;
+        CGPoint p = [tap locationInView:_mainView];
+        return p.x <= 80 && p.y <= 100;
     } else {
         return YES;
     }

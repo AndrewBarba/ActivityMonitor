@@ -11,6 +11,7 @@
 #import "ABDataManager.h"
 
 #define AB_STEP_COUNTING_KEY @"ABStepCountingOkay"
+#define AB_STEP_COUNTING_GOAL_KEY @"ABStepCountingGoal"
 
 @interface ABStepCounter() {
     CMStepCounter *_stepCounter; // shared step counter
@@ -110,21 +111,17 @@
     }];
 }
 
-#pragma mark - Helpers
+#pragma mark - Step Goal
 
-- (void)_addSteps:(NSInteger)steps toActivityDayWithDate:(NSDate *)date onCompletion:(ABActivityDayBlock)complete
+- (NSInteger)stepCountingGoal
 {
-    [[ABDataManager sharedManager] importData:^(NSManagedObjectContext *context){
-        
-        ABActivityDay *day = [ABActivityDay activityDayForDate:date inContext:context];
-        [day addSteps:steps];
-        
-        return ^{
-            if (complete) {
-                complete([day referenceInContext:nil], nil);
-            }
-        };
-    }];
+    return [[NSUserDefaults standardUserDefaults] integerForKey:AB_STEP_COUNTING_GOAL_KEY];
+}
+
+- (void)setStepCountingGoal:(NSInteger)steps
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:steps forKey:AB_STEP_COUNTING_GOAL_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Availability
@@ -150,6 +147,10 @@ AB_DISABLE_INIT()
         _backgroundQueue = [[NSOperationQueue alloc] init];
         if ([CMStepCounter isStepCountingAvailable]) {
             _stepCounter = [[CMStepCounter alloc] init];
+        }
+        
+        if (self.stepCountingGoal == 0) {
+            [self setStepCountingGoal:10000];
         }
     }
     return self;

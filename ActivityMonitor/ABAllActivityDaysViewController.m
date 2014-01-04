@@ -78,17 +78,17 @@
 
 #pragma mark - Delete (dev only)
 
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        ABActivityDay *day = [self.fetchedResultsController objectAtIndexPath:indexPath];
-//        [[ABDataManager sharedManager].mainContext deleteObject:day];
-//    }
-//}
-//
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return YES;
-//}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        ABActivityDay *day = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [[ABDataManager sharedManager].mainContext deleteObject:day];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
 
 @end

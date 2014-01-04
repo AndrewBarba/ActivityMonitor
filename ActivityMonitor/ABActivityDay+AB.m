@@ -7,6 +7,7 @@
 //
 
 #import "ABActivityDay+AB.h"
+#import "ABStepEntry+AB.h"
 
 @implementation ABActivityDay (AB)
 
@@ -24,23 +25,57 @@
     }
     
     NSDate *diaryDate = [date diaryDate];
-    
     NSString *dateId = [diaryDate simpleStringRespresentation];
-    day = [self singleObjectForProperty:@"id" withValue:dateId inContext:context];
     
-    if (day == nil) {
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[self entityName]];
+    request.predicate = [NSPredicate predicateWithFormat:@"id == %@", dateId];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
+    request.relationshipKeyPathsForPrefetching = @[@"entries"];
+    
+    NSError *error = nil;
+    NSArray *matches = [context executeFetchRequest:request error:&error];
+    
+    if (error) {
+        [NSException raise:@"Error fetching Step Entry" format:nil];
+    } else if (matches.count > 1) {
+        day = [self _mergeDays:matches inContext:context];
+    } else if (matches.count == 1){
+        day = [matches lastObject];
+    } else {
         day = [self objectInContext:context];
         day.id = dateId;
         day.date = diaryDate;
-        day.steps = @0;
     }
     
     return day;
 }
 
-- (void)addSteps:(NSInteger)steps
++ (instancetype)_mergeDays:(NSArray *)days inContext:(NSManagedObjectContext *)context
 {
-    self.steps = @(self.steps.integerValue + steps);
+    ABActivityDay *day = [self objectInContext:context];
+    NSMutableSet *entries = [NSMutableSet set];
+    for (ABActivityDay *day in days) {
+        [entries addObjectsFromArray:day.entries.allObjects];
+    }
+    day.entries = entries;
+    
+    return day;
+}
+
+- (NSNumber *)steps
+{
+    NSInteger steps = 0;
+    for (ABStepEntry *entry in self.entries) {
+        steps += entry.steps.integerValue;
+    }
+    return @(steps);
+}
+
+- (void)setSteps:(NSNumber *)steps
+{
+    NSString *deviceId = [UIDevice vendorIdentifier];
+    ABStepEntry *entry = [ABStepEntry entryForActivityDay:self fromDevice:deviceId inContext:self.managedObjectContext];
+    entry.steps = steps;
 }
 
 - (NSString *)description

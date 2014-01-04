@@ -13,6 +13,8 @@
 
 + (instancetype)activityDayForDate:(NSDate *)date inContext:(NSManagedObjectContext *)context;
 
-- (void)addSteps:(NSInteger)steps;
+- (NSNumber *)steps;
+
+- (void)setSteps:(NSNumber *)steps;
 
 @end

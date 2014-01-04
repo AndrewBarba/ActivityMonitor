@@ -32,7 +32,11 @@
 	
     [NSNotificationCenter observe:ABActivityDayUpdatedNotificationKey on:^(NSNotification *notification){
         [self reloadData];
-    }];    
+    }];
+    
+    [NSNotificationCenter observe:UIApplicationDidEnterBackgroundNotification on:^(NSNotification *notification){
+        self.activityDay = [ABActivityDay activityDayForDate:nil inContext:[ABDataManager sharedManager].mainContext];
+    }];
 }
 
 - (void)setActivityDay:(ABActivityDay *)activityDay

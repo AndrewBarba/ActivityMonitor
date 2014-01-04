@@ -21,5 +21,6 @@
     #import "NSNumber+AB.h"
     #import "UIView+AB.h"
     #import "UIColor+AB.h"
+    #import "UIDevice+AB.h"
     #import "ABViewController.h"
 #endif

@@ -177,6 +177,11 @@
     });
 }
 
+- (BOOL)isDocumentOpenAndReady
+{
+    return _mainDocument != nil && _mainDocument.documentState == UIDocumentStateNormal;
+}
+
 #pragma mark - Initialization
 
 AB_DISABLE_INIT()

@@ -43,6 +43,11 @@ typedef NS_ENUM(NSInteger, ABStepCountingStatus){
 - (void)stopMonitoringStepCount;
 
 /**
+ * The users step conting goal. Default 10,000
+ */
+- (NSInteger)stepCountingGoal;
+
+/**
  * The Current status of step counting permission
  */
 - (ABStepCountingStatus)stepCountingStatus;

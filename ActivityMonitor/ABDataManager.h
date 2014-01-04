@@ -56,6 +56,11 @@ typedef void (^ABCoreDataBooleanBlock) (BOOL success);
 - (void)resetDocument:(ABCoreDataBooleanBlock)complete;
 
 /**
+ * Is document open and ready to use
+ */
+- (BOOL)isDocumentOpenAndReady;
+
+/**
  * Static accessor
  */
 + (instancetype)sharedManager;

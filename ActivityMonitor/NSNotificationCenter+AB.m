@@ -10,9 +10,9 @@
 
 @implementation NSNotificationCenter (AB)
 
-+ (void)observe:(NSString *)name on:(void (^)(NSNotification *))block
++ (id)observe:(NSString *)name on:(void (^)(NSNotification *))block
 {
-    [[NSNotificationCenter defaultCenter] addObserverForName:name object:nil queue:[NSOperationQueue mainQueue] usingBlock:block];
+    return [[NSNotificationCenter defaultCenter] addObserverForName:name object:nil queue:[NSOperationQueue mainQueue] usingBlock:block];
 }
 
 @end

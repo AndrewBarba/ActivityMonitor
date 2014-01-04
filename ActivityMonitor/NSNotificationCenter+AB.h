@@ -10,6 +10,6 @@
 
 @interface NSNotificationCenter (AB)
 
-+ (void)observe:(NSString *)name on:(void(^)(NSNotification *notification))block;
++ (id)observe:(NSString *)name on:(void(^)(NSNotification *notification))block;
 
 @end

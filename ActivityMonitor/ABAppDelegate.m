@@ -20,24 +20,42 @@
     [NSNotificationCenter observe:ABActivityDayUpdatedNotificationKey on:^(NSNotification *notification){
         ABActivityDay *day = notification.object;
         if ([day.date isToday]) {
-            [application setApplicationIconBadgeNumber:day.steps.integerValue];
+//            NSInteger count = MAX(0, [ABStepCounter sharedCounter].stepCountingGoal - day.steps.integerValue);
+            NSInteger count = day.steps.integerValue;
+            [application setApplicationIconBadgeNumber:count];
         }
-    }];
+    }];    
     
     return YES;
 }
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
-    [[ABStepCounter sharedCounter] rebuildActivityDayForDate:nil onCompletion:^(ABActivityDay *day, NSError *error){
-        if (day && !error) {
-            completionHandler(UIBackgroundFetchResultNewData);
-        } else {
-            completionHandler(UIBackgroundFetchResultFailed);
-        }
-    }];
+    ABBlock update = ^{
+        [[ABStepCounter sharedCounter] rebuildActivityDayForDate:nil onCompletion:^(ABActivityDay *day, NSError *error){
+            if (day && !error) {
+                if (completionHandler) {
+                    completionHandler(UIBackgroundFetchResultNewData);
+                }
+            } else {
+                if (completionHandler) {
+                    completionHandler(UIBackgroundFetchResultFailed);
+                }
+            }
+        }];
+    };
+    
+    if ([ABDataManager sharedManager].isDocumentOpenAndReady) {
+        update();
+    } else {
+        id observer = nil;
+        observer = [NSNotificationCenter observe:ABMainDocumentOpenNotificationKey on:^(NSNotification *notification){
+            update();
+            [[NSNotificationCenter defaultCenter] removeObserver:observer name:ABMainDocumentOpenNotificationKey object:nil];
+        }];
+    }
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -48,8 +66,6 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    
-    [[ABStepCounter sharedCounter] stopMonitoringStepCount];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -60,12 +76,6 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    
-    if ([ABDataManager sharedManager].mainDocument) {
-        [[ABStepCounter sharedCounter] rebuildActivityDayForDate:nil onCompletion:^(ABActivityDay *day, NSError *error){
-            [[ABStepCounter sharedCounter] startMonitoringStepCount];
-        }];
-    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
