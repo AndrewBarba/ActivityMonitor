@@ -43,9 +43,10 @@
         day = [matches lastObject];
     } else {
         day = [self objectInContext:context];
-        day.id = dateId;
-        day.date = diaryDate;
     }
+    
+    day.id = dateId;
+    day.date = diaryDate;
     
     return day;
 }
@@ -56,6 +57,7 @@
     NSMutableSet *entries = [NSMutableSet set];
     for (ABActivityDay *day in days) {
         [entries addObjectsFromArray:day.entries.allObjects];
+        [context deleteObject:day];
     }
     day.entries = entries;
     
