@@ -44,19 +44,13 @@
 
 - (void)rebuildAllActivity:(ABSetBlock)complete
 {
-    if (!_stepCounter) {
-        if (complete) {
-            complete(nil);
-        }
-    }
-    
-    [self _rebuildActivityHelper:7 days:[NSMutableSet set] onCompletion:complete];
+    [self _rebuildActivityHelper:6 days:[NSMutableSet set] onCompletion:complete];
 }
 
 - (void)_rebuildActivityHelper:(NSInteger)remaining days:(NSMutableSet *)days onCompletion:(ABSetBlock)complete
 {
     ABDispatchBackground(^{
-        if (remaining == 0) {
+        if (remaining < 0) {
             if (complete) {
                 complete(days);
             }
@@ -74,12 +68,6 @@
 
 - (void)rebuildActivityDayForDate:(NSDate *)date onCompletion:(ABActivityDayBlock)complete
 {
-    if (!_stepCounter) {
-        if (complete) {
-            complete(nil, [NSError errorWithDomain:@"Step counting is not available on this device" code:0 userInfo:nil]);
-        }
-    }
-    
     if (!date) {
         date = [NSDate date];
     }
@@ -87,28 +75,42 @@
     NSDate *start = [date diaryDate];
     NSDate *end = [start tomorrow];
     
-    [_stepCounter queryStepCountStartingFrom:start to:end toQueue:_backgroundQueue withHandler:^(NSInteger steps, NSError *error){
-        if (!error) {
-            [[ABDataManager sharedManager] importData:^(NSManagedObjectContext *context){
-
-                ABActivityDay *day = [ABActivityDay activityDayForDate:start inContext:context];
-                day.steps = @(steps);
-                
-                return ^{
-                    ABActivityDay *newDay = [day referenceInContext:nil];
-                    if (complete) {
-                        complete(newDay, nil);
-                    }
-                    [[NSNotificationCenter defaultCenter] postNotificationName:ABActivityDayUpdatedNotificationKey
-                                                                        object:newDay];
-                };
-            }];
-        } else {
-            if (complete) {
-                complete(nil, error);
+    if (_stepCounter) {
+        [_stepCounter queryStepCountStartingFrom:start to:end toQueue:_backgroundQueue withHandler:^(NSInteger steps, NSError *error){
+            if (!error) {
+                [[ABDataManager sharedManager] importData:^(NSManagedObjectContext *context){
+                    
+                    ABActivityDay *day = [ABActivityDay activityDayForDate:start inContext:context];
+                    day.steps = @(steps);
+                    
+                    return ^{
+                        ABActivityDay *newDay = [day referenceInContext:nil];
+                        if (complete) {
+                            complete(newDay, nil);
+                        }
+                        [[NSNotificationCenter defaultCenter] postNotificationName:ABActivityDayUpdatedNotificationKey
+                                                                            object:newDay];
+                    };
+                }];
+            } else {
+                if (complete) {
+                    complete(nil, error);
+                }
             }
-        }
-    }];
+        }];
+    } else {
+        [[ABDataManager sharedManager] importData:^(NSManagedObjectContext *context){
+            ABActivityDay *day = [ABActivityDay activityDayForDate:start inContext:context];
+            day.steps = @(0);
+            return ^{
+                ABActivityDay *newDay = [day referenceInContext:nil];
+                if (complete) {
+                    complete(newDay, nil);
+                }
+                [[NSNotificationCenter defaultCenter] postNotificationName:ABActivityDayUpdatedNotificationKey object:newDay];
+            };
+        }];
+    }
 }
 
 #pragma mark - Step Goal

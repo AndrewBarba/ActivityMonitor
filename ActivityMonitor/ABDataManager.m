@@ -151,30 +151,51 @@
         
         // create document
         NSString *documentName = @"ABCoreDataDocument";
-        NSURL *fileURL = [[[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil] URLByAppendingPathComponent:@"Documents"];
-        if (fileURL == nil) {
+        
+        NSURL *fileURL = nil;
+        NSURL *iCloudURL = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
+        if (iCloudURL == nil) {
             fileURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
             NSLog(@"WARNING: iCloud is not available");
+        } else {
+            fileURL = [iCloudURL URLByAppendingPathComponent:@"Documents"];
         }
+
         fileURL = [fileURL URLByAppendingPathComponent:documentName];
+        
+        NSMutableDictionary *options = [@{ NSMigratePersistentStoresAutomaticallyOption : @(YES),
+                                           NSInferMappingModelAutomaticallyOption       : @(YES) } mutableCopy];
+        
+        if (iCloudURL) {
+            options[NSPersistentStoreUbiquitousContentNameKey] = documentName;
+            options[NSPersistentStoreUbiquitousContentURLKey] = [iCloudURL URLByAppendingPathComponent:@"CoreData"];
+        }
         
         ABDispatchMain(^{
             self.mainDocument = [[UIManagedDocument alloc] initWithFileURL:fileURL];
-            self.mainDocument.persistentStoreOptions = @{ NSMigratePersistentStoresAutomaticallyOption : @(YES),
-                                                          NSInferMappingModelAutomaticallyOption       : @(YES),
-                                                          NSPersistentStoreUbiquitousContentNameKey    : documentName,
-                                                          NSPersistentStoreUbiquitousContentURLKey     : [fileURL URLByAppendingPathComponent:@"CoreData"]};
+            self.mainDocument.persistentStoreOptions = [options copy];
             
             // create background context
             _backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
             _backgroundContext.parentContext = self.mainContext;
             [_backgroundContext setUndoManager:nil];
             
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(_handlePersistantStoreUpdated:)
+                                                         name:NSPersistentStoreDidImportUbiquitousContentChangesNotification
+                                                       object:self.mainContext.persistentStoreCoordinator];
+            
             if (complete) {
                 complete();
             }
         });
     });
+}
+
+- (void)_handlePersistantStoreUpdated:(NSNotification *)notification
+{
+    NSLog(@"UPDTAED iCLOUD");
+    [[NSNotificationCenter defaultCenter] postNotificationName:ABiCloudDocumentUpdatedNotificationKey object:nil];
 }
 
 - (BOOL)isDocumentOpenAndReady

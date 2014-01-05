@@ -16,6 +16,16 @@
 
 @implementation ABCoreDataTableViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [NSNotificationCenter observe:ABiCloudDocumentUpdatedNotificationKey on:^(NSNotification *notification){
+        [self performFetch];
+        [self.tableView reloadData];
+    }];
+}
+
 - (void)setFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController
 {
     if (_fetchedResultsController != fetchedResultsController) {
@@ -45,7 +55,7 @@
 {
     [super endFetchingData];
     ABDispatchAfter(0.3, ^{
-        //        [self.fetchedResultsController performFetch:nil];
+        [self performFetch];
         [self.tableView reloadData];
     });
 }

@@ -83,7 +83,8 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:
-            @"{\n id: %@,\n date: %@,\n steps: %@\n}",
+            @"{\n objectId: %@,\n id: %@,\n date: %@,\n steps: %@\n}",
+            self.objectID,
             self.id,
             self.date.longStringRepresentation,
             self.steps.stringValue];

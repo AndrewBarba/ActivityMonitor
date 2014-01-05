@@ -12,6 +12,7 @@
 
 #define ABMainDocumentOpenNotificationKey @"ABMainDocumentOpenNotification"
 #define ABMainDocumentClosedNotificationKey @"ABMainDocumentClosedNotification"
+#define ABiCloudDocumentUpdatedNotificationKey @"ABiCloudDocumentUpdatedNotification"
 
 //------------------------------------------ MACROS
 
