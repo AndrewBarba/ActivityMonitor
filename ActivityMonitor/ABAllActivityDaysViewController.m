@@ -37,7 +37,7 @@
 }
 
 - (void)_setupFetchedResultsController
-{
+{    
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"ABActivityDay"];
     request.fetchBatchSize = 10;
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]];

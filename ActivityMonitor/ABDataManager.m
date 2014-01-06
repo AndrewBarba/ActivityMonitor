@@ -150,25 +150,26 @@
     ABDispatchBackground(^{
         
         // create document
-        NSString *documentName = @"ABCoreDataDocument";
+        NSString *documentName = @"ABCoreDataDocument.activityMonitor";
         
         NSURL *fileURL = nil;
-        NSURL *iCloudURL = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
+        NSURL *iCloudURL = nil; // [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
         if (iCloudURL == nil) {
             fileURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-            NSLog(@"WARNING: iCloud is not available");
-        } else {
-            fileURL = [iCloudURL URLByAppendingPathComponent:@"Documents"];
         }
-
+        
         fileURL = [fileURL URLByAppendingPathComponent:documentName];
         
         NSMutableDictionary *options = [@{ NSMigratePersistentStoresAutomaticallyOption : @(YES),
                                            NSInferMappingModelAutomaticallyOption       : @(YES) } mutableCopy];
         
         if (iCloudURL) {
-            options[NSPersistentStoreUbiquitousContentNameKey] = documentName;
-            options[NSPersistentStoreUbiquitousContentURLKey] = [iCloudURL URLByAppendingPathComponent:@"CoreData"];
+            
+            NSString *name = documentName;
+            NSURL *logsURL = [iCloudURL URLByAppendingPathComponent:@"CoreData"];
+            
+            options[NSPersistentStoreUbiquitousContentNameKey] = name;
+            options[NSPersistentStoreUbiquitousContentURLKey] = logsURL;
         }
         
         ABDispatchMain(^{
@@ -195,7 +196,7 @@
 - (void)_handlePersistantStoreUpdated:(NSNotification *)notification
 {
     NSLog(@"UPDTAED iCLOUD");
-    [[NSNotificationCenter defaultCenter] postNotificationName:ABiCloudDocumentUpdatedNotificationKey object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:ABiCloudDocumentUpdatedNotificationKey object:notification.object];
 }
 
 - (BOOL)isDocumentOpenAndReady

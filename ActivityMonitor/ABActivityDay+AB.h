@@ -17,4 +17,6 @@
 
 - (void)setSteps:(NSNumber *)steps;
 
+- (float)progress;
+
 @end

@@ -19,4 +19,17 @@
     return color;
 }
 
++ (instancetype)colorForStepProgress:(float)progress
+{
+    if (progress < 0.33) {
+        return [UIColor redColor];
+    }
+    
+    if (progress < 0.66) {
+        return [UIColor orangeColor];
+    }
+    
+    return [UIColor activitySuccessColor];
+}
+
 @end

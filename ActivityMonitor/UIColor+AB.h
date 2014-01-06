@@ -10,6 +10,8 @@
 
 @interface UIColor (AB)
 
++ (instancetype)colorForStepProgress:(float)progress;
+
 + (instancetype)activitySuccessColor;
 
 @end

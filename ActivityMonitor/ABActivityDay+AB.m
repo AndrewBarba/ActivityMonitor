@@ -8,6 +8,7 @@
 
 #import "ABActivityDay+AB.h"
 #import "ABStepEntry+AB.h"
+#import "ABStepCounter.h"
 
 @implementation ABActivityDay (AB)
 
@@ -78,6 +79,13 @@
     NSString *deviceId = [UIDevice vendorIdentifier];
     ABStepEntry *entry = [ABStepEntry entryForActivityDay:self fromDevice:deviceId inContext:self.managedObjectContext];
     entry.steps = steps;
+}
+
+- (float)progress
+{
+    float steps = self.steps.floatValue;
+    float goal = [[ABStepCounter sharedCounter] stepCountingGoal];
+    return steps / goal;
 }
 
 - (NSString *)description

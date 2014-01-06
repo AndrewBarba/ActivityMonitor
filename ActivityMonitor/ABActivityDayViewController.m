@@ -13,6 +13,7 @@
 @interface ABActivityDayViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *stepsLabel;
+@property (strong, nonatomic) UIView *progressView;
 
 @end
 
@@ -51,6 +52,17 @@
 {
     // update UI
     self.stepsLabel.text = [NSString stringWithFormat:@"%@\nsteps", _activityDay.steps.decimalString];
+    
+    float progress = _activityDay.progress;
+    UIColor *progressColor = [UIColor colorForStepProgress:progress];
+    self.stepsLabel.textColor = progressColor;
+    self.progressView.backgroundColor = progressColor;
+    
+    CGFloat pHeight = self.view.height * progress;
+    self.progressView.frame = ({
+        CGRect frame = CGRectMake(0, self.view.height-pHeight, self.view.width, pHeight);
+        frame;
+    });
 }
 
 #pragma mark - Step Label
@@ -60,9 +72,19 @@
     if (_stepsLabel != stepsLabel) {
         _stepsLabel = stepsLabel;
         _stepsLabel.layer.cornerRadius = MIN(_stepsLabel.height, _stepsLabel.width) / 2.0f;
-        _stepsLabel.layer.borderWidth = 4.0;
-        _stepsLabel.layer.borderColor = [UIColor whiteColor].CGColor;
+        _stepsLabel.backgroundColor = [UIColor whiteColor];
+//        _stepsLabel.layer.borderWidth = 8.0;
+//        _stepsLabel.layer.borderColor = [UIColor whiteColor].CGColor;
     }
+}
+
+- (UIView *)progressView
+{
+    if (!_progressView) {
+        _progressView = [[UIView alloc] initWithFrame:CGRectZero];
+        [self.view insertSubview:_progressView atIndex:0];
+    }
+    return _progressView;
 }
 
 @end
