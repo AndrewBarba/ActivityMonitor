@@ -9,6 +9,7 @@
 #import "ABActivityDay+AB.h"
 #import "ABStepEntry+AB.h"
 #import "ABStepCounter.h"
+#import "ABDataManager.h"
 
 @implementation ABActivityDay (AB)
 
@@ -31,7 +32,6 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[self entityName]];
     request.predicate = [NSPredicate predicateWithFormat:@"id == %@", dateId];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
-    request.relationshipKeyPathsForPrefetching = @[@"entries"];
     
     NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error];
@@ -44,6 +44,7 @@
         day = [matches lastObject];
     } else {
         day = [self objectInContext:context];
+        day.objectDeleted = @(NO);
     }
     
     day.id = dateId;
@@ -52,15 +53,48 @@
     return day;
 }
 
++ (void)mergeDuplicates:(NSArray *)activityDays inContext:(NSManagedObjectContext *)context
+{
+    if (!context) {
+        context = [ABDataManager sharedManager].mainContext;
+    }
+    
+    NSMutableDictionary *data = [NSMutableDictionary dictionary];
+    
+    for (ABActivityDay *day in activityDays) {
+        NSMutableArray *days = data[day.id];
+        if (!days) {
+            days = [NSMutableArray array];
+            data[day.id] = days;
+        }
+        [days addObject:day];
+    }
+    
+    [data enumerateKeysAndObjectsUsingBlock:^(NSString *id, NSArray *days, BOOL *stop){
+        if (days.count > 1) {
+            [self _mergeDays:days inContext:context];
+        }
+    }];
+}
+
 + (instancetype)_mergeDays:(NSArray *)days inContext:(NSManagedObjectContext *)context
 {
-    ABActivityDay *day = [self objectInContext:context];
+    NSString *dateId = nil;
+    NSDate *date = nil;
+    
     NSMutableSet *entries = [NSMutableSet set];
     for (ABActivityDay *day in days) {
+        dateId = [day.id copy];
+        date = [day.date copy];
         [entries addObjectsFromArray:day.entries.allObjects];
-        [context deleteObject:day];
+        day.objectDeleted = @(YES);
     }
-    day.entries = entries;
+    
+    ABActivityDay *day = [self objectInContext:context];
+    [day addEntries:entries];
+    day.id = dateId;
+    day.date = date;
+    day.objectDeleted = @(NO);
     
     return day;
 }
@@ -88,7 +122,7 @@
     return steps / goal;
 }
 
-- (NSString *)description
+- (NSString *)ABDescription
 {
     return [NSString stringWithFormat:
             @"{\n objectId: %@,\n id: %@,\n date: %@,\n steps: %@\n}",

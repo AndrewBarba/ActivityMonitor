@@ -22,9 +22,14 @@
     [super viewDidLoad];
     
     [NSNotificationCenter observe:ABiCloudDocumentUpdatedNotificationKey on:^(NSNotification *notification){
-        [self performFetch];
-        [self.tableView reloadData];
+        [self coreDataDocumentUpdated];
     }];
+}
+
+- (void)coreDataDocumentUpdated
+{
+    [self performFetch];
+    [self.tableView reloadData];
 }
 
 - (void)setFetchedResultsController:(NSFetchedResultsController *)fetchedResultsController

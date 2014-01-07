@@ -13,10 +13,14 @@
 
 + (instancetype)activityDayForDate:(NSDate *)date inContext:(NSManagedObjectContext *)context;
 
++ (void)mergeDuplicates:(NSArray *)activityDays inContext:(NSManagedObjectContext *)context;
+
 - (NSNumber *)steps;
 
 - (void)setSteps:(NSNumber *)steps;
 
 - (float)progress;
+
+- (NSString *)ABDescription; // simple string representation
 
 @end

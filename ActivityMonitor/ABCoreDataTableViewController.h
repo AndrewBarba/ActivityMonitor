@@ -27,6 +27,8 @@
 
 - (BOOL)containsEmptySet;
 
+- (void)coreDataDocumentUpdated;
+
 - (UITableViewCell *)emptySetTableViewCellForIndexPath:(NSIndexPath *)indexPath;
 
 @end

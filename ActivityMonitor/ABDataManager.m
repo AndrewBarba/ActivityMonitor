@@ -150,12 +150,13 @@
     ABDispatchBackground(^{
         
         // create document
-        NSString *documentName = @"ABCoreDataDocument.activityMonitor";
+        NSString *documentName = @"ABActivityMonitorCoreDataDocument";
         
         NSURL *fileURL = nil;
-        NSURL *iCloudURL = nil; // [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
+        NSURL *iCloudURL = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
         if (iCloudURL == nil) {
             fileURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+            NSLog(@"iCloud Disabled");
         }
         
         fileURL = [fileURL URLByAppendingPathComponent:documentName];
@@ -164,16 +165,17 @@
                                            NSInferMappingModelAutomaticallyOption       : @(YES) } mutableCopy];
         
         if (iCloudURL) {
-            
-            NSString *name = documentName;
             NSURL *logsURL = [iCloudURL URLByAppendingPathComponent:@"CoreData"];
-            
-            options[NSPersistentStoreUbiquitousContentNameKey] = name;
+            options[NSPersistentStoreUbiquitousContentNameKey] = documentName;
             options[NSPersistentStoreUbiquitousContentURLKey] = logsURL;
         }
         
         ABDispatchMain(^{
-            self.mainDocument = [[UIManagedDocument alloc] initWithFileURL:fileURL];
+            
+            NSURL *documentURL = iCloudURL ? [iCloudURL URLByAppendingPathComponent:@"Documents"] : fileURL;
+            documentURL = [documentURL URLByAppendingPathComponent:documentName];
+            
+            self.mainDocument = [[UIManagedDocument alloc] initWithFileURL:documentURL];
             self.mainDocument.persistentStoreOptions = [options copy];
             
             // create background context
@@ -186,6 +188,11 @@
                                                          name:NSPersistentStoreDidImportUbiquitousContentChangesNotification
                                                        object:self.mainContext.persistentStoreCoordinator];
             
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(_handlePersistantStoreChanged:)
+                                                         name:NSPersistentStoreCoordinatorStoresDidChangeNotification
+                                                       object:self.mainContext.persistentStoreCoordinator];
+            
             if (complete) {
                 complete();
             }
@@ -196,6 +203,12 @@
 - (void)_handlePersistantStoreUpdated:(NSNotification *)notification
 {
     NSLog(@"UPDTAED iCLOUD");
+    [[NSNotificationCenter defaultCenter] postNotificationName:ABiCloudDocumentUpdatedNotificationKey object:notification.object];
+}
+
+- (void)_handlePersistantStoreChanged:(NSNotification *)notification
+{
+    NSLog(@"STORE CHANGED");
     [[NSNotificationCenter defaultCenter] postNotificationName:ABiCloudDocumentUpdatedNotificationKey object:notification.object];
 }
 

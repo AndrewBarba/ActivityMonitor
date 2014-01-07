@@ -2,7 +2,7 @@
 //  ABActivityDay.h
 //  ActivityMonitor
 //
-//  Created by Andrew Barba on 1/4/14.
+//  Created by Andrew Barba on 1/6/14.
 //  Copyright (c) 2014 Andrew Barba. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSString * id;
+@property (nonatomic, retain) NSNumber * objectDeleted;
 @property (nonatomic, retain) NSSet *entries;
 @end
 

@@ -32,10 +32,17 @@
     }];
 	
     [NSNotificationCenter observe:ABActivityDayUpdatedNotificationKey on:^(NSNotification *notification){
+        if (self.activityDay.objectDeleted.boolValue) {
+            self.activityDay = [ABActivityDay activityDayForDate:_activityDay.date inContext:[ABDataManager sharedManager].mainContext];
+        }
         [self reloadData];
     }];
     
     [NSNotificationCenter observe:UIApplicationDidEnterBackgroundNotification on:^(NSNotification *notification){
+        self.activityDay = [ABActivityDay activityDayForDate:nil inContext:[ABDataManager sharedManager].mainContext];
+    }];
+    
+    [NSNotificationCenter observe:UIApplicationWillEnterForegroundNotification on:^(NSNotification *notification){
         self.activityDay = [ABActivityDay activityDayForDate:nil inContext:[ABDataManager sharedManager].mainContext];
     }];
 }

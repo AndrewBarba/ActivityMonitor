@@ -32,10 +32,10 @@
         entry = [matches lastObject];
     } else {
         entry = [self objectInContext:context];
-        entry.activityDay = day;
-        entry.deviceIdentifier = deviceId;
-        entry.steps = @0;
     }
+    
+    entry.activityDay = day;
+    entry.deviceIdentifier = deviceId;
     
     return entry;
 }

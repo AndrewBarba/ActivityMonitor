@@ -25,8 +25,21 @@
 
 - (void)_handleDocumentOpened
 {
-    [[ABStepCounter sharedCounter] startMonitoringStepCount];
-    [self performSegueWithIdentifier:@"Main Segue" sender:self];
+    ABBlock done = ^{
+        ABDispatchMain(^{
+            [[ABStepCounter sharedCounter] startMonitoringStepCount];
+            [self performSegueWithIdentifier:@"Main Segue" sender:self];
+        });
+    };
+    
+    NSSet *set = [ABActivityDay allObjectsInContext:nil];
+    if (set.count == 0) {
+        [[ABStepCounter sharedCounter] rebuildAllActivity:^(NSSet *set){
+            done();
+        }];
+    } else {
+        done();
+    }
 }
 
 @end

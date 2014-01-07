@@ -22,31 +22,28 @@
     
     self.animatesChanges = YES;
     
-    [self setupRefreshControl];
-    
-    [self _setupFetchedResultsController];
-    
-    [self beginFetchingData];
+    [self _setupFetchedResultsController];    
 }
 
-- (void)beginFetchingData
+- (void)coreDataDocumentUpdated
 {
-    [[ABStepCounter sharedCounter] rebuildAllActivity:^(NSSet *days){
-        [self endFetchingData];
-    }];
+    [super coreDataDocumentUpdated];
+    [ABActivityDay mergeDuplicates:self.fetchedResultsController.fetchedObjects inContext:nil];
 }
 
 - (void)_setupFetchedResultsController
 {    
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"ABActivityDay"];
+    request.predicate = [NSPredicate predicateWithFormat:@"objectDeleted == NO", nil];
     request.fetchBatchSize = 10;
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:[ABDataManager sharedManager].mainContext
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
+    [ABActivityDay mergeDuplicates:self.fetchedResultsController.fetchedObjects inContext:nil];
 }
-
+    
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.containsEmptySet) {
@@ -70,10 +67,6 @@
     if ([self.delegate respondsToSelector:@selector(activityDaysController:selectedActivityDay:)]) {
         [self.delegate activityDaysController:self selectedActivityDay:day];
     }
-    
-    ABDispatchAfter(0.3, ^{
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    });
 }
 
 #pragma mark - Delete (dev only)
@@ -82,7 +75,10 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         ABActivityDay *day = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [[ABDataManager sharedManager].mainContext deleteObject:day];
+        day.objectDeleted = @(YES);
+        ABDispatchMain(^{
+            NSLog(@"%@", day);
+        });
     }
 }
 

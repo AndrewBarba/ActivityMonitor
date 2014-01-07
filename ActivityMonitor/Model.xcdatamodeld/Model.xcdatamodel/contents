@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5041" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="ABActivityDay" representedClassName="ABActivityDay" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="objectDeleted" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ABStepEntry" inverseName="activityDay" inverseEntity="ABStepEntry" syncable="YES"/>
     </entity>
     <entity name="ABStepEntry" representedClassName="ABStepEntry" syncable="YES">
@@ -11,7 +12,7 @@
         <relationship name="activityDay" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ABActivityDay" inverseName="entries" inverseEntity="ABActivityDay" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ABActivityDay" positionX="0" positionY="0" width="128" height="88"/>
-        <element name="ABStepEntry" positionX="216" positionY="65" width="128" height="88"/>
+        <element name="ABActivityDay" positionX="0" positionY="0" width="128" height="103"/>
+        <element name="ABStepEntry" positionX="216" positionY="65" width="128" height="90"/>
     </elements>
 </model>
