@@ -2,18 +2,18 @@
 //  ABStepEntry.m
 //  ActivityMonitor
 //
-//  Created by Andrew Barba on 1/6/14.
+//  Created by Andrew Barba on 1/8/14.
 //  Copyright (c) 2014 Andrew Barba. All rights reserved.
 //
 
 #import "ABStepEntry.h"
-#import "ABActivityDay.h"
 
 
 @implementation ABStepEntry
 
-@dynamic deviceIdentifier;
+@dynamic date;
+@dynamic id;
 @dynamic steps;
-@dynamic activityDay;
+@dynamic deviceIdentifier;
 
 @end

@@ -32,7 +32,7 @@
         });
     };
     
-    NSSet *set = [ABActivityDay allObjectsInContext:nil];
+    NSSet *set = [ABStepEntry allObjectsInContext:nil];
     if (set.count == 0) {
         [[ABStepCounter sharedCounter] rebuildAllActivity:^(NSSet *set){
             done();

@@ -15,4 +15,9 @@
  */
 + (NSString *)vendorIdentifier;
 
+/**
+ * A unique identifier for this device
+ */
++ (NSString *)installIdentifier;
+
 @end

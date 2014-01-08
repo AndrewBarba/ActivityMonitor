@@ -80,16 +80,16 @@
             if (!error) {
                 [[ABDataManager sharedManager] importData:^(NSManagedObjectContext *context){
                     
+                    ABStepEntry *entry = [ABStepEntry entryForDate:start inContext:context];
+                    entry.steps = @(steps);
+                    
                     ABActivityDay *day = [ABActivityDay activityDayForDate:start inContext:context];
-                    day.steps = @(steps);
+                    [day reloadStepsInContext:context];
                     
                     return ^{
-                        ABActivityDay *newDay = [day referenceInContext:nil];
                         if (complete) {
-                            complete(newDay, nil);
+                            complete(day, nil);
                         }
-                        [[NSNotificationCenter defaultCenter] postNotificationName:ABActivityDayUpdatedNotificationKey
-                                                                            object:newDay];
                     };
                 }];
             } else {
@@ -99,17 +99,9 @@
             }
         }];
     } else {
-        [[ABDataManager sharedManager] importData:^(NSManagedObjectContext *context){
-            ABActivityDay *day = [ABActivityDay activityDayForDate:start inContext:context];
-            day.steps = @(0);
-            return ^{
-                ABActivityDay *newDay = [day referenceInContext:nil];
-                if (complete) {
-                    complete(newDay, nil);
-                }
-                [[NSNotificationCenter defaultCenter] postNotificationName:ABActivityDayUpdatedNotificationKey object:newDay];
-            };
-        }];
+        if (complete) {
+            complete(nil, [NSError errorWithDomain:@"No step counter" code:0 userInfo:nil]);
+        }
     }
 }
 

@@ -12,6 +12,8 @@
 
 @interface ABAllActivityDaysViewController ()
 
+@property (nonatomic, strong) NSArray *activityDays;
+
 @end
 
 @implementation ABAllActivityDaysViewController
@@ -20,39 +22,47 @@
 {
     [super viewDidLoad];
     
-    self.animatesChanges = YES;
+    [NSNotificationCenter observe:ABiCloudDocumentUpdatedNotificationKey on:^(NSNotification *notification){
+        [self reloadData];
+    }];
     
-    [self _setupFetchedResultsController];    
+    [NSNotificationCenter observe:ABActivityDayUpdatedNotificationKey on:^(NSNotification *notification){
+        [self.tableView reloadData];
+    }];
+    
+    [self reloadData];
 }
 
-- (void)coreDataDocumentUpdated
+- (void)reloadData
 {
-    [super coreDataDocumentUpdated];
-    [ABActivityDay mergeDuplicates:self.fetchedResultsController.fetchedObjects inContext:nil];
+    NSManagedObjectContext *context = [ABDataManager sharedManager].mainContext;
+    self.activityDays = [ABActivityDay allActivityDaysInContext:context];
 }
 
-- (void)_setupFetchedResultsController
-{    
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"ABActivityDay"];
-    request.predicate = [NSPredicate predicateWithFormat:@"objectDeleted == NO", nil];
-    request.fetchBatchSize = 10;
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                                                        managedObjectContext:[ABDataManager sharedManager].mainContext
-                                                                          sectionNameKeyPath:nil
-                                                                                   cacheName:nil];
-    [ABActivityDay mergeDuplicates:self.fetchedResultsController.fetchedObjects inContext:nil];
+- (void)setActivityDays:(NSArray *)activityDays
+{
+    if (_activityDays != activityDays) {
+        _activityDays = activityDays;
+        [self.tableView reloadData];
+    }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.activityDays.count;
 }
     
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.containsEmptySet) {
-        return [super emptySetTableViewCellForIndexPath:indexPath];
-    }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Activity Day Cell" forIndexPath:indexPath];
     
-    ABActivityDay *day = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    ABActivityDay *day = self.activityDays[indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ steps", day.steps.decimalString];
     cell.detailTextLabel.text = day.date.longStringRepresentation;
     
@@ -63,28 +73,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ABActivityDay *day = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    ABActivityDay *day = self.activityDays[indexPath.row];
     if ([self.delegate respondsToSelector:@selector(activityDaysController:selectedActivityDay:)]) {
         [self.delegate activityDaysController:self selectedActivityDay:day];
     }
-}
-
-#pragma mark - Delete (dev only)
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        ABActivityDay *day = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        day.objectDeleted = @(YES);
-        ABDispatchMain(^{
-            NSLog(@"%@", day);
-        });
-    }
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
 }
 
 @end

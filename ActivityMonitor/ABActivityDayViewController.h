@@ -7,7 +7,7 @@
 //
 
 #import "ABViewController.h"
-#import "ABActivityDay+AB.h"
+#import "ABActivityDay.h"
 
 @interface ABActivityDayViewController : ABViewController
 

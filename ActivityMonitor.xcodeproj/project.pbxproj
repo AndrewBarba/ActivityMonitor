@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B8564562187BAF150065685F /* ABStepEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = B8564561187BAF150065685F /* ABStepEntry.m */; };
-		B856456B187BB2020065685F /* ABActivityDay.m in Sources */ = {isa = PBXBuildFile; fileRef = B856456A187BB2020065685F /* ABActivityDay.m */; };
 		B87D6E651876212700C25789 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B87D6E641876212700C25789 /* Foundation.framework */; };
 		B87D6E671876212700C25789 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B87D6E661876212700C25789 /* CoreGraphics.framework */; };
 		B87D6E691876212700C25789 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B87D6E681876212700C25789 /* UIKit.framework */; };
@@ -26,12 +24,14 @@
 		B87D6EA31876224100C25789 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B87D6EA21876224100C25789 /* CoreData.framework */; };
 		B87D6EA71876228200C25789 /* ABDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D6EA61876228200C25789 /* ABDispatch.m */; };
 		B87D6EAB1876248900C25789 /* ABDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D6EAA1876248900C25789 /* ABDataManager.m */; };
+		B88099BE187DF462007C8325 /* ABStepEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = B88099BD187DF462007C8325 /* ABStepEntry.m */; };
+		B88099C1187DF470007C8325 /* ABStepEntry+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B88099C0187DF470007C8325 /* ABStepEntry+AB.m */; };
+		B88099C4187DF62D007C8325 /* ABActivityDay.m in Sources */ = {isa = PBXBuildFile; fileRef = B88099C3187DF62D007C8325 /* ABActivityDay.m */; };
 		B8833E3B18764E8E00469012 /* ABViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E3A18764E8E00469012 /* ABViewController.m */; };
 		B8833E3E18764EA400469012 /* ABRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E3D18764EA400469012 /* ABRootViewController.m */; };
 		B8833E4218771E0D00469012 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8833E4018771E0D00469012 /* Model.xcdatamodeld */; };
 		B8833E4C18771FBF00469012 /* NSManagedObject+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E4B18771FBF00469012 /* NSManagedObject+AB.m */; };
 		B8833E501877205600469012 /* NSDictionary+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E4F1877205600469012 /* NSDictionary+AB.m */; };
-		B8833E53187721EA00469012 /* ABActivityDay+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E52187721EA00469012 /* ABActivityDay+AB.m */; };
 		B8833E561877247B00469012 /* NSDate+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E551877247B00469012 /* NSDate+AB.m */; };
 		B8833E5B1877269C00469012 /* ABStepCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E5A1877269C00469012 /* ABStepCounter.m */; };
 		B8833E6118778AB300469012 /* NSNotificationCenter+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E6018778AB300469012 /* NSNotificationCenter+AB.m */; };
@@ -44,7 +44,6 @@
 		B8833E7A1877AFAB00469012 /* ABActivityDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E791877AFAB00469012 /* ABActivityDayViewController.m */; };
 		B8833E7D1877B26900469012 /* UIColor+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8833E7C1877B26900469012 /* UIColor+AB.m */; };
 		B8D398FC1878B8D800F7BD19 /* UIDevice+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D398FB1878B8D800F7BD19 /* UIDevice+AB.m */; };
-		B8D399061878BA4300F7BD19 /* ABStepEntry+AB.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D399051878BA4300F7BD19 /* ABStepEntry+AB.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,10 +57,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B8564560187BAF150065685F /* ABStepEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABStepEntry.h; sourceTree = "<group>"; };
-		B8564561187BAF150065685F /* ABStepEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABStepEntry.m; sourceTree = "<group>"; };
-		B8564569187BB2020065685F /* ABActivityDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABActivityDay.h; sourceTree = "<group>"; };
-		B856456A187BB2020065685F /* ABActivityDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABActivityDay.m; sourceTree = "<group>"; };
 		B87D6E611876212700C25789 /* ActivityMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivityMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B87D6E641876212700C25789 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B87D6E661876212700C25789 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,6 +82,12 @@
 		B87D6EAA1876248900C25789 /* ABDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABDataManager.m; sourceTree = "<group>"; };
 		B87D6EAD187625CA00C25789 /* ABConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABConstants.h; sourceTree = "<group>"; };
 		B87D6EAE187626D700C25789 /* ActivityMonitor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ActivityMonitor.entitlements; sourceTree = "<group>"; };
+		B88099BC187DF462007C8325 /* ABStepEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABStepEntry.h; sourceTree = "<group>"; };
+		B88099BD187DF462007C8325 /* ABStepEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABStepEntry.m; sourceTree = "<group>"; };
+		B88099BF187DF470007C8325 /* ABStepEntry+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ABStepEntry+AB.h"; sourceTree = "<group>"; };
+		B88099C0187DF470007C8325 /* ABStepEntry+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ABStepEntry+AB.m"; sourceTree = "<group>"; };
+		B88099C2187DF62D007C8325 /* ABActivityDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABActivityDay.h; sourceTree = "<group>"; };
+		B88099C3187DF62D007C8325 /* ABActivityDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABActivityDay.m; sourceTree = "<group>"; };
 		B8833E3918764E8E00469012 /* ABViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABViewController.h; sourceTree = "<group>"; };
 		B8833E3A18764E8E00469012 /* ABViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABViewController.m; sourceTree = "<group>"; };
 		B8833E3C18764EA400469012 /* ABRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABRootViewController.h; sourceTree = "<group>"; };
@@ -96,8 +97,6 @@
 		B8833E4B18771FBF00469012 /* NSManagedObject+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+AB.m"; sourceTree = "<group>"; };
 		B8833E4E1877205600469012 /* NSDictionary+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+AB.h"; sourceTree = "<group>"; };
 		B8833E4F1877205600469012 /* NSDictionary+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+AB.m"; sourceTree = "<group>"; };
-		B8833E51187721EA00469012 /* ABActivityDay+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ABActivityDay+AB.h"; sourceTree = "<group>"; };
-		B8833E52187721EA00469012 /* ABActivityDay+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ABActivityDay+AB.m"; sourceTree = "<group>"; };
 		B8833E541877247B00469012 /* NSDate+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+AB.h"; sourceTree = "<group>"; };
 		B8833E551877247B00469012 /* NSDate+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+AB.m"; sourceTree = "<group>"; };
 		B8833E591877269C00469012 /* ABStepCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABStepCounter.h; sourceTree = "<group>"; };
@@ -122,8 +121,6 @@
 		B8833E7C1877B26900469012 /* UIColor+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AB.m"; sourceTree = "<group>"; };
 		B8D398FA1878B8D800F7BD19 /* UIDevice+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+AB.h"; sourceTree = "<group>"; };
 		B8D398FB1878B8D800F7BD19 /* UIDevice+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+AB.m"; sourceTree = "<group>"; };
-		B8D399041878BA4300F7BD19 /* ABStepEntry+AB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ABStepEntry+AB.h"; sourceTree = "<group>"; };
-		B8D399051878BA4300F7BD19 /* ABStepEntry+AB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ABStepEntry+AB.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +307,15 @@
 			name = "Core Data";
 			sourceTree = "<group>";
 		};
+		B88099B8187DF434007C8325 /* Step Entry */ = {
+			isa = PBXGroup;
+			children = (
+				B88099BF187DF470007C8325 /* ABStepEntry+AB.h */,
+				B88099C0187DF470007C8325 /* ABStepEntry+AB.m */,
+			);
+			name = "Step Entry";
+			sourceTree = "<group>";
+		};
 		B8833E3818764E7900469012 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,10 +343,8 @@
 		B8833E4318771F6900469012 /* Base Class */ = {
 			isa = PBXGroup;
 			children = (
-				B8564569187BB2020065685F /* ABActivityDay.h */,
-				B856456A187BB2020065685F /* ABActivityDay.m */,
-				B8564560187BAF150065685F /* ABStepEntry.h */,
-				B8564561187BAF150065685F /* ABStepEntry.m */,
+				B88099BC187DF462007C8325 /* ABStepEntry.h */,
+				B88099BD187DF462007C8325 /* ABStepEntry.m */,
 			);
 			name = "Base Class";
 			sourceTree = "<group>";
@@ -349,8 +353,8 @@
 			isa = PBXGroup;
 			children = (
 				B8833E4918771FB100469012 /* Base */,
+				B88099B8187DF434007C8325 /* Step Entry */,
 				B8833E4818771FAB00469012 /* Activity Day */,
-				B8D399031878BA2E00F7BD19 /* Step Entry */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -358,8 +362,8 @@
 		B8833E4818771FAB00469012 /* Activity Day */ = {
 			isa = PBXGroup;
 			children = (
-				B8833E51187721EA00469012 /* ABActivityDay+AB.h */,
-				B8833E52187721EA00469012 /* ABActivityDay+AB.m */,
+				B88099C2187DF62D007C8325 /* ABActivityDay.h */,
+				B88099C3187DF62D007C8325 /* ABActivityDay.m */,
 			);
 			name = "Activity Day";
 			sourceTree = "<group>";
@@ -437,15 +441,6 @@
 				B8833E791877AFAB00469012 /* ABActivityDayViewController.m */,
 			);
 			name = "Activity Day";
-			sourceTree = "<group>";
-		};
-		B8D399031878BA2E00F7BD19 /* Step Entry */ = {
-			isa = PBXGroup;
-			children = (
-				B8D399041878BA4300F7BD19 /* ABStepEntry+AB.h */,
-				B8D399051878BA4300F7BD19 /* ABStepEntry+AB.m */,
-			);
-			name = "Step Entry";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -558,15 +553,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8833E6F18779D2800469012 /* NSNumber+AB.m in Sources */,
-				B8564562187BAF150065685F /* ABStepEntry.m in Sources */,
+				B88099BE187DF462007C8325 /* ABStepEntry.m in Sources */,
 				B8D398FC1878B8D800F7BD19 /* UIDevice+AB.m in Sources */,
 				B8833E7D1877B26900469012 /* UIColor+AB.m in Sources */,
 				B87D6E711876212700C25789 /* main.m in Sources */,
 				B8833E3E18764EA400469012 /* ABRootViewController.m in Sources */,
-				B8833E53187721EA00469012 /* ABActivityDay+AB.m in Sources */,
 				B87D6E751876212700C25789 /* ABAppDelegate.m in Sources */,
 				B8833E4218771E0D00469012 /* Model.xcdatamodeld in Sources */,
-				B8D399061878BA4300F7BD19 /* ABStepEntry+AB.m in Sources */,
 				B8833E731877A49B00469012 /* ABMenuViewController.m in Sources */,
 				B8833E5B1877269C00469012 /* ABStepCounter.m in Sources */,
 				B87D6EAB1876248900C25789 /* ABDataManager.m in Sources */,
@@ -575,11 +568,12 @@
 				B8833E6118778AB300469012 /* NSNotificationCenter+AB.m in Sources */,
 				B8833E761877A62D00469012 /* UIView+AB.m in Sources */,
 				B8833E7A1877AFAB00469012 /* ABActivityDayViewController.m in Sources */,
+				B88099C4187DF62D007C8325 /* ABActivityDay.m in Sources */,
 				B87D6EA71876228200C25789 /* ABDispatch.m in Sources */,
+				B88099C1187DF470007C8325 /* ABStepEntry+AB.m in Sources */,
 				B8833E661877999600469012 /* ABCoreDataTableViewController.m in Sources */,
 				B8833E6918779A5C00469012 /* ABTableViewController.m in Sources */,
 				B8833E501877205600469012 /* NSDictionary+AB.m in Sources */,
-				B856456B187BB2020065685F /* ABActivityDay.m in Sources */,
 				B8833E4C18771FBF00469012 /* NSManagedObject+AB.m in Sources */,
 				B8833E3B18764E8E00469012 /* ABViewController.m in Sources */,
 			);

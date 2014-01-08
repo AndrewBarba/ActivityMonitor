@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ABActivityDay+AB.h"
+#import "ABActivityDay.h"
 
 static NSString *const ABActivityDayUpdatedNotificationKey = @"ABActivityDayUpdatedNotificationKey";
 

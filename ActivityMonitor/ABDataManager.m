@@ -153,7 +153,7 @@
         NSString *documentName = @"ABActivityMonitorCoreDataDocument";
         
         NSURL *fileURL = nil;
-        NSURL *iCloudURL = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
+        NSURL *iCloudURL = AB_ICLOUD_ENABLED ? [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil] : nil;
         if (iCloudURL == nil) {
             fileURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
             NSLog(@"iCloud Disabled");

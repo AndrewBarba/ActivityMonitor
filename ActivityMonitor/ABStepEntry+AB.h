@@ -2,7 +2,7 @@
 //  ABStepEntry+AB.h
 //  ActivityMonitor
 //
-//  Created by Andrew Barba on 1/4/14.
+//  Created by Andrew Barba on 1/8/14.
 //  Copyright (c) 2014 Andrew Barba. All rights reserved.
 //
 
@@ -11,6 +11,8 @@
 
 @interface ABStepEntry (AB)
 
-+ (instancetype)entryForActivityDay:(ABActivityDay *)day fromDevice:(NSString *)device inContext:(NSManagedObjectContext *)context;
++ (instancetype)entryForDate:(NSDate *)date inContext:(NSManagedObjectContext *)context;
+
++ (NSSet *)allEntriesForDate:(NSDate *)date inContext:(NSManagedObjectContext *)context;
 
 @end

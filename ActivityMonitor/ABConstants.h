@@ -8,6 +8,8 @@
 
 #define AB_DOCUMENT_VERSION @"1.0"
 
+#define AB_ICLOUD_ENABLED 1
+
 //------------------------------------------ NSNOTIFICATIONS
 
 #define ABMainDocumentOpenNotificationKey @"ABMainDocumentOpenNotification"

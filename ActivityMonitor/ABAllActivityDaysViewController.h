@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Andrew Barba. All rights reserved.
 //
 
-#import "ABCoreDataTableViewController.h"
-#import "ABActivityDay+AB.h"
+#import "ABTableViewController.h"
+#import "ABActivityDay.h"
 
 @class ABAllActivityDaysViewController;
 
@@ -17,7 +17,7 @@
 
 @end
 
-@interface ABAllActivityDaysViewController : ABCoreDataTableViewController
+@interface ABAllActivityDaysViewController : ABTableViewController
 
 @property (nonatomic, weak) id <ABAllActivityDaysDelegate> delegate;
 

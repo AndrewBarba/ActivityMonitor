@@ -7,7 +7,7 @@
 //
 
 #import "ABCoreDataTableViewController.h"
-#import "ABActivityDay+AB.h"
+#import "ABActivityDay.h"
 
 @interface ABCoreDataTableViewController () {
     BOOL _isUpdatingTable;

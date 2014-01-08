@@ -2,28 +2,29 @@
 //  ABActivityDay.h
 //  ActivityMonitor
 //
-//  Created by Andrew Barba on 1/6/14.
+//  Created by Andrew Barba on 1/8/14.
 //  Copyright (c) 2014 Andrew Barba. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#import "ABStepEntry+AB.h"
 
-@class ABStepEntry;
+@interface ABActivityDay : NSObject
 
-@interface ABActivityDay : NSManagedObject
+@property (nonatomic, strong) NSString *id;
 
-@property (nonatomic, retain) NSDate * date;
-@property (nonatomic, retain) NSString * id;
-@property (nonatomic, retain) NSNumber * objectDeleted;
-@property (nonatomic, retain) NSSet *entries;
-@end
+@property (nonatomic, strong) NSNumber *steps;
 
-@interface ABActivityDay (CoreDataGeneratedAccessors)
+@property (nonatomic, strong) NSDate *date;
 
-- (void)addEntriesObject:(ABStepEntry *)value;
-- (void)removeEntriesObject:(ABStepEntry *)value;
-- (void)addEntries:(NSSet *)values;
-- (void)removeEntries:(NSSet *)values;
+- (float)progress;
+
+- (void)reloadStepsInContext:(NSManagedObjectContext *)context;
+
+- (BOOL)isEqualToActivityDay:(ABActivityDay *)day;
+
++ (instancetype)activityDayForDate:(NSDate *)date inContext:(NSManagedObjectContext *)context;
+
++ (NSArray *)allActivityDaysInContext:(NSManagedObjectContext *)context;
 
 @end
