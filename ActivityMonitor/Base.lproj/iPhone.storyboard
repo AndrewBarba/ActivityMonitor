@@ -19,7 +19,6 @@
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1W-WU-9JY" userLabel="Bottom View">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="QcV-TU-mgA" kind="embed" id="hAs-Kn-0xm"/>
                                 </connections>
@@ -27,13 +26,12 @@
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nHD-Ro-Ohy" userLabel="Main View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="RPI-mH-w9x" kind="embed" id="dOx-OE-S2d"/>
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="g1W-WU-9JY" firstAttribute="leading" secondItem="zDQ-pe-MfL" secondAttribute="leading" id="2Kg-bl-qmT"/>
                             <constraint firstAttribute="trailing" secondItem="g1W-WU-9JY" secondAttribute="trailing" constant="80" id="5B1-Kt-T3h"/>
@@ -64,7 +62,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Activity Day Cell" textLabel="xrH-zD-jhr" detailTextLabel="Xvn-eS-9uJ" style="IBUITableViewCellStyleSubtitle" id="iHk-5D-wAG">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Activity Day Cell" textLabel="xrH-zD-jhr" detailTextLabel="Xvn-eS-9uJ" style="IBUITableViewCellStyleSubtitle" id="iHk-5D-wAG" customClass="ABActivityCell">
                                 <rect key="frame" x="0.0" y="22" width="240" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iHk-5D-wAG" id="Qho-6N-Bv3">
@@ -119,7 +117,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="xEr-mZ-Zrk" secondAttribute="centerY" constant="0.5" id="1ZR-Uv-j6y"/>
                             <constraint firstAttribute="centerX" secondItem="xEr-mZ-Zrk" secondAttribute="centerX" id="xvU-5z-EYK"/>

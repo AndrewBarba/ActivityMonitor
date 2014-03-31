@@ -159,7 +159,6 @@
             NSLog(@"iCloud Disabled");
         }
         
-        fileURL = [fileURL URLByAppendingPathComponent:documentName];
         
         NSMutableDictionary *options = [@{ NSMigratePersistentStoresAutomaticallyOption : @(YES),
                                            NSInferMappingModelAutomaticallyOption       : @(YES) } mutableCopy];

@@ -70,8 +70,14 @@
         steps += entry.steps.integerValue;
     }
     self.steps = @(steps);
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:ABActivityDayUpdatedNotificationKey object:self];
+}
+
+- (void)setSteps:(NSNumber *)steps
+{
+    if (![_steps isEqualToNumber:steps]) {
+        _steps = steps;
+        [[NSNotificationCenter defaultCenter] postNotificationName:ABActivityDayUpdatedNotificationKey object:self];
+    }
 }
 
 - (float)progress

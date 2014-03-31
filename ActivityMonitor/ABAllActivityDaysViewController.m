@@ -9,6 +9,7 @@
 #import "ABAllActivityDaysViewController.h"
 #import "ABStepCounter.h"
 #import "ABDataManager.h"
+#import "ABActivityCell.h"
 
 @interface ABAllActivityDaysViewController ()
 
@@ -21,6 +22,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
     
     [NSNotificationCenter observe:ABiCloudDocumentUpdatedNotificationKey on:^(NSNotification *notification){
         [self reloadData];
@@ -60,13 +63,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Activity Day Cell" forIndexPath:indexPath];
+    ABActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Activity Day Cell" forIndexPath:indexPath];
     
     ABActivityDay *day = self.activityDays[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ steps", day.steps.decimalString];
-    cell.detailTextLabel.text = day.date.longStringRepresentation;
+    cell.activityDay = day;
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
 }
 
 #pragma mark - Selection

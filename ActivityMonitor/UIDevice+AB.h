@@ -11,13 +11,8 @@
 @interface UIDevice (AB)
 
 /**
- * A type of unique of identifier
+ * Unique device identifier
  */
-+ (NSString *)vendorIdentifier;
-
-/**
- * A unique identifier for this device
- */
-+ (NSString *)installIdentifier;
++ (NSString *)deviceIdentifier;
 
 @end

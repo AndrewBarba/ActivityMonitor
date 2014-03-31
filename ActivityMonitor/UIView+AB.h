@@ -44,4 +44,8 @@
 
 - (void)applyBottomGradient;
 
+- (void)addMotionEffect;
+
+- (void)makeTranslucent;
+
 @end

@@ -55,19 +55,22 @@
 
 - (void)reloadData
 {
-    // update UI
-    self.stepsLabel.text = [NSString stringWithFormat:@"%@\nsteps", _activityDay.steps.decimalString];
-    
-    float progress = _activityDay.progress;
-    UIColor *progressColor = [UIColor colorForStepProgress:progress];
-    self.stepsLabel.textColor = progressColor;
-    self.progressView.backgroundColor = progressColor;
-    
-    CGFloat pHeight = self.view.height * progress;
-    self.progressView.frame = ({
-        CGRect frame = CGRectMake(0, self.view.height-pHeight, self.view.width, pHeight);
-        frame;
-    });
+    [UIView animateWithDuration:0.5 animations:^{
+        // update UI
+        self.stepsLabel.text = [NSString stringWithFormat:@"%@\nsteps", _activityDay.steps.decimalString];
+        
+        float progress = _activityDay.progress;
+        UIColor *progressColor = [UIColor colorForStepProgress:progress];
+        self.stepsLabel.textColor = progressColor;
+        self.stepsLabel.layer.borderColor = progressColor.CGColor;
+        self.progressView.backgroundColor = progressColor;
+        
+        self.progressView.frame = ({
+            CGFloat pHeight = self.view.height * 0.9 * progress;
+            CGRect frame = CGRectMake(0, self.view.height-pHeight, self.view.width, pHeight);
+            frame;
+        });
+    }];
 }
 
 #pragma mark - Step Label
@@ -78,15 +81,16 @@
         _stepsLabel = stepsLabel;
         _stepsLabel.layer.cornerRadius = MIN(_stepsLabel.height, _stepsLabel.width) / 2.0f;
         _stepsLabel.backgroundColor = [UIColor whiteColor];
-//        _stepsLabel.layer.borderWidth = 8.0;
-//        _stepsLabel.layer.borderColor = [UIColor whiteColor].CGColor;
+        [_stepsLabel addMotionEffect];
+        _stepsLabel.layer.borderWidth = 2.0;
+        _stepsLabel.backgroundColor = [UIColor colorWithWhite:0.99 alpha:0.9];
     }
 }
 
 - (UIView *)progressView
 {
     if (!_progressView) {
-        _progressView = [[UIView alloc] initWithFrame:CGRectZero];
+        _progressView = [[UIView alloc] initWithFrame:CGRectMake(0.0, self.view.height, self.view.width, 0.0)];
         [self.view insertSubview:_progressView atIndex:0];
     }
     return _progressView;

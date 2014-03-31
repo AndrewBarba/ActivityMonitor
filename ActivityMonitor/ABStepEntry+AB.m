@@ -25,7 +25,7 @@
     
     NSDate *diaryDate = [date diaryDate];
     NSString *dateId = [diaryDate simpleStringRespresentation];
-    NSString *deviceId = [UIDevice installIdentifier];
+    NSString *deviceId = [UIDevice deviceIdentifier];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[self entityName]];
     request.predicate = [NSPredicate predicateWithFormat:@"id == %@ && deviceIdentifier == %@", dateId, deviceId];

@@ -24,7 +24,9 @@
             NSInteger count = day.steps.integerValue;
             [application setApplicationIconBadgeNumber:count];
         }
-    }];    
+    }];
+    
+    self.window.backgroundColor = [UIColor clearColor];
     
     return YES;
 }

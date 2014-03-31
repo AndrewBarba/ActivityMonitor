@@ -29,6 +29,10 @@
         return [UIColor orangeColor];
     }
     
+    if (progress < 1.0) {
+        return [UIColor magentaColor];
+    }
+    
     return [UIColor activitySuccessColor];
 }
 
